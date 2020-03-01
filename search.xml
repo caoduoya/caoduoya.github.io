@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>vue使用axios</title>
+      <link href="/2020/03/01/vue-shi-yong-axios/"/>
+      <url>/2020/03/01/vue-shi-yong-axios/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue使用axios"><a href="#vue使用axios" class="headerlink" title="vue使用axios"></a>vue使用axios</h1><p>1.在mina.js中写下面代码</p><pre><code>import Axios from &quot;axios&quot;;Vue.prototype.HOST = &quot;http://localhost:4000&quot;;Vue.prototype.$axios = Axios;</code></pre><p>2.在页面使用的时候是</p><pre class=" language-js"><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$axios​    <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>HOST <span class="token operator">+</span> <span class="token string">"/api/login"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>​     username<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>username<span class="token punctuation">,</span>​     password<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>password​    <span class="token punctuation">}</span><span class="token punctuation">)</span>​    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token operator">*</span>result<span class="token operator">*</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>​     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>​     <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> result<span class="token punctuation">.</span>data<span class="token punctuation">.</span>msg<span class="token punctuation">;</span>​    <span class="token punctuation">}</span><span class="token punctuation">)</span>​    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token operator">*</span>err<span class="token operator">*</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>​     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>​    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>了解跨越问题</title>
+      <link href="/2020/03/01/liao-jie-kua-yue-wen-ti/"/>
+      <url>/2020/03/01/liao-jie-kua-yue-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<h3 id="了解跨域问题"><a href="#了解跨域问题" class="headerlink" title="了解跨域问题?"></a>了解跨域问题?</h3><p>首先了解下浏览器的同源策略 同源策略<code>/SOP（Same origin policy）</code>是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到<code>XSS</code>、<code>CSFR</code>等攻击。所谓同源是指”<strong>协议+域名+端口</strong>“三者相同，即便两个不同的域名指向同一个ip地址，也非同源</p><h4 id="怎样解决跨域问题的呢？"><a href="#怎样解决跨域问题的呢？" class="headerlink" title="怎样解决跨域问题的呢？"></a>怎样解决跨域问题的呢？</h4><ul><li><strong>通过jsonp跨域</strong></li></ul><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>script<span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token string">'text/javascript'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 传参并指定回调执行函数为onBack</span>script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'http://www.....:8080/login?user=admin&amp;callback=onBack'</span><span class="token punctuation">;</span>document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 回调执行函数</span><span class="token keyword">function</span> <span class="token function">onBack</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token function">alert</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><ul><li><strong>document.domain + iframe跨域</strong></li></ul><blockquote><p>此方案仅限主域相同，子域不同的跨域应用场景</p></blockquote><p>1.）父窗口：(<a href="http://www.domain.com/a.html" target="_blank" rel="noopener">http://www.domain.com/a.html</a>)</p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>iframe<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://child.domain.com/b.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">    document<span class="token punctuation">.</span>domain <span class="token operator">=</span> <span class="token string">'domain.com'</span><span class="token punctuation">;</span>    <span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token string">'admin'</span><span class="token punctuation">;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre><p>2.）子窗口：(<a href="http://child.domain.com/b.html" target="_blank" rel="noopener">http://child.domain.com/b.html</a>)</p><pre class=" language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span>domain <span class="token operator">=</span> <span class="token string">'domain.com'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 获取父窗口中变量</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'get js data from parent ---> '</span> <span class="token operator">+</span> window<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><ul><li><strong>nginx代理跨域</strong></li><li><strong>nodejs中间件代理跨域</strong></li><li><strong>后端在头部信息里面设置安全域名</strong></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue的路由守卫</title>
+      <link href="/2020/03/01/vue-de-lu-you-shou-wei/"/>
+      <url>/2020/03/01/vue-de-lu-you-shou-wei/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue的路由守卫"><a href="#vue的路由守卫" class="headerlink" title="vue的路由守卫"></a>vue的路由守卫</h1><p>vue路由守卫实现代码</p><pre><code>router.beforeEach((to,from,next)=&gt;{  if(to.path == &#39;/login&#39;){    next();  }else{    alert(&#39;您还没有登录，请先登录&#39;);    next(&#39;/login&#39;);  }})</code></pre><h3 id="各参数含义"><a href="#各参数含义" class="headerlink" title="各参数含义"></a>各参数含义</h3><p>1.to 表示将要跳转到的组件</p><p>2.from原组件</p><p>3.next()进入到下一个组件的钩子函数</p><p>4.next(/login)进入指定的组件的钩子函数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>git的使用</title>
       <link href="/2020/03/01/git-de-shi-yong/"/>
       <url>/2020/03/01/git-de-shi-yong/</url>
