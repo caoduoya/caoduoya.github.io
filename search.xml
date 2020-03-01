@@ -8,7 +8,7 @@
       <link href="/2020/03/01/git-de-shi-yong/"/>
       <url>/2020/03/01/git-de-shi-yong/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><h2 id="1-本地拉取远程仓库代码"><a href="#1-本地拉取远程仓库代码" class="headerlink" title="1.本地拉取远程仓库代码"></a>1.本地拉取远程仓库代码</h2><p>1.本地新建一个文件夹</p><p>2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)</p><pre><code>git init</code></pre><p>3.将gitee(码云)中的项目地址复制过来</p><pre><code>git clone &quot;仓库地址&quot;</code></pre><p>4.执行完之后，就会发现代码已经下载到了我们的新建文件夹中</p><h2 id="2-本地连接已经创建好的仓库"><a href="#2-本地连接已经创建好的仓库" class="headerlink" title="2.本地连接已经创建好的仓库"></a>2.本地连接已经创建好的仓库</h2><p>1.步骤接拉取代码步骤之后</p><p>2.把文件添加到本地版本库</p><pre><code>git add 文件名</code></pre><p>3.将修改提交到仓库</p><pre><code>git commit -m &quot;注释&quot;</code></pre><p>4.关联一个远程仓库</p><pre><code>git remote add origin &quot;仓库地址&quot;</code></pre><p>5.最新修改推送到远程仓库</p><pre><code>git push -u origin &quot;分支名&quot;</code></pre>]]></content>
       
       
       <categories>
