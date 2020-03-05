@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>谈hybrid</title>
+      <link href="/2020/03/05/tan-hybrid/"/>
+      <url>/2020/03/05/tan-hybrid/</url>
+      
+        <content type="html"><![CDATA[<h1 id="谈hybrid"><a href="#谈hybrid" class="headerlink" title="谈hybrid"></a>谈hybrid</h1><p>hybrid为”混合”,是前端和客户端的混合开发,需要前端开发人员和客户端开发人员配合完成,在某个环节也会涉及到server端</p><h2 id="hybrid和h5的区别"><a href="#hybrid和h5的区别" class="headerlink" title="hybrid和h5的区别"></a>hybrid和h5的区别</h2><p>相比优点</p><p>1.体验更好，和NA体验基本上是一致的</p><p>2.看快速迭代，不需要app审核</p><p>相比缺点</p><p>1.开发成本高，联调，测试，查bug较麻烦</p><p>2.运维成本高。</p><p>适用场景</p><ul><li>不是所有场景都适合使用 <code>hybrid</code></li><li>使用 <code>NA</code> ：体验要求极致，变化不频繁</li><li>使用 <code>hybrid</code> ：体验要求高，变化频繁</li><li>使用 <code>h5</code> ：体验无要求，不常用</li></ul><h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><ul><li>前端做好静态页面（<code>html js css</code>），将文件交给客户端</li><li>客户端拿到前端静态页面，以文件形式存储在 <code>app</code> 中</li><li>客户端在一个 <code>webview</code> 中</li><li>使用 <code>file</code> 协议加载静态页面</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> app </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 混合式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>前端性能优化</title>
       <link href="/2020/03/04/qian-duan-xing-neng-you-hua/"/>
       <url>/2020/03/04/qian-duan-xing-neng-you-hua/</url>
