@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>http相关知识</title>
+      <link href="/2020/03/06/http-xiang-guan-zhi-shi/"/>
+      <url>/2020/03/06/http-xiang-guan-zhi-shi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="HTTP相关知识"><a href="#HTTP相关知识" class="headerlink" title="HTTP相关知识"></a>HTTP相关知识</h2><h3 id="1-HTTP有什么特点"><a href="#1-HTTP有什么特点" class="headerlink" title="1. HTTP有什么特点"></a>1. HTTP有什么特点</h3><ul><li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径</li><li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由 <code>Content-Type</code> 加以标记</li><li>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接 (深入-持久连接、管线化)</li><li>无状态：HTTP协议是无状态协议( <code>Cookie</code> 的出现)</li></ul><h3 id="2-http和https协议有什么区别"><a href="#2-http和https协议有什么区别" class="headerlink" title="2. http和https协议有什么区别"></a>2. http和https协议有什么区别</h3><blockquote><p>http: 是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（Tcp），用于从www服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少</p><p>https: 是以安全为目标的HTTP通道，简单讲是 <code>HTTP</code> 的安全版，即 <code>HTTP</code> 下加入 <code>SSL</code> 层，<code>HTTPS</code> 的安全基础是 <code>SSL</code> ，因此加密的详细内容就需要 <code>SSL</code></p></blockquote><ul><li><code>http</code> 是超文本传输协议，信息是明文传输，<code>https</code> 则是具有安全性的 <code>ssl</code> 加密传输协议</li><li><code>http</code> 和 <code>https</code> 使用的是完全不同的连接方式，用的端口也不一样，前者是 <code>80</code> ，后者是 <code>443</code></li><li><code>http</code> 的连接很简单，是无状态的；<code>HTTPS</code> 协议是由 <code>SSL+HTTP</code> 协议构建的可进行加密传输、身份认证的网络协议，比 <code>http</code> 协议安全</li></ul><h3 id="3-http状态码有那些？分别代表是什么意思"><a href="#3-http状态码有那些？分别代表是什么意思" class="headerlink" title="3. http状态码有那些？分别代表是什么意思"></a>3. http状态码有那些？分别代表是什么意思</h3><p>常用 <code>http</code> 状态码：</p><ul><li><code>200</code> <code>OK</code> 服务器成功处理了请求</li><li><code>301/302</code> <code>Moved Permanently</code>（重定向）请求的URL已移走</li><li><code>404</code> <code>Not Found</code> (页面丢失)未找到资源</li><li><code>403</code> 服务器拒绝请求</li><li><code>408</code> （请求超时） 服务器等候请求时发生超时</li><li><code>501</code> <code>Internal Server Error</code> 服务器遇到一个错误，使其无法对请求提供服务</li><li><code>502</code> （错误网关） 服务器作为网关或代理，从上游服务器收到无效响应</li><li><code>504</code> （网关超时） 服务器作为网关或代理，但是没有及时从上游服务器收到请求</li></ul><h3 id="4-Http报文"><a href="#4-Http报文" class="headerlink" title="4.Http报文"></a>4.Http报文</h3><p><code>HTTP</code> 报文是面向文本的，报文中的每一个字段都是一些 <code>ASCII</code> 码串，各个字段的长度是不确定的。<code>HTTP</code> 有两类报文：<strong>请求报文和响应报文</strong></p><p>HTTP的这两种报文都由三部分组成：开始行、首部行、实体主体</p><h3 id="5-为什么利用多个域名来存储网站资源会更有效"><a href="#5-为什么利用多个域名来存储网站资源会更有效" class="headerlink" title="5.为什么利用多个域名来存储网站资源会更有效"></a>5.为什么利用多个域名来存储网站资源会更有效</h3><ul><li><code>CDN</code> 缓存更方便</li><li>突破浏览器并发限制</li><li>节约 <code>cookie</code> 带宽</li><li>节约主域名的连接数，优化页面响应速度</li><li>防止不必要的安全问题</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> http </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>谈hybrid</title>
       <link href="/2020/03/05/tan-hybrid/"/>
       <url>/2020/03/05/tan-hybrid/</url>
