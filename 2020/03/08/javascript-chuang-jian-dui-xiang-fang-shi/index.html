@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git的使用, 曹豆芽">
+    <meta name="keywords" content="javascript创建对象方式, 曹豆芽">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>git的使用 | 曹豆芽</title>
+    <title>javascript创建对象方式 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git的使用</h1>
+                    <h1 class="description center-align post-title">javascript创建对象方式</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/git/" class="post-category">
-                                git
+                            <a href="/categories/js/" class="post-category">
+                                js
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-01
+                    2020-03-08
                 </div>
                 
 
@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    203
+                    348
                 </div>
                 
 
@@ -416,16 +416,69 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><h2 id="1-本地拉取远程仓库代码"><a href="#1-本地拉取远程仓库代码" class="headerlink" title="1.本地拉取远程仓库代码"></a>1.本地拉取远程仓库代码</h2><p>1.本地新建一个文件夹</p>
-<p>2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)</p>
-<pre><code>git init</code></pre><p>3.将gitee(码云)中的项目地址复制过来</p>
-<pre><code>git clone &quot;仓库地址&quot;</code></pre><p>4.执行完之后，就会发现代码已经下载到了我们的新建文件夹中</p>
-<h2 id="2-本地连接已经创建好的仓库"><a href="#2-本地连接已经创建好的仓库" class="headerlink" title="2.本地连接已经创建好的仓库"></a>2.本地连接已经创建好的仓库</h2><p>1.步骤接拉取代码步骤之后</p>
-<p>2.把文件添加到本地版本库</p>
-<pre><code>git add 文件名</code></pre><p>3.将修改提交到仓库</p>
-<pre><code>git commit -m &quot;注释&quot;</code></pre><p>4.关联一个远程仓库</p>
-<pre><code>git remote add origin &quot;仓库地址&quot;</code></pre><p>5.最新修改推送到远程仓库</p>
-<pre><code>git push -u origin &quot;分支名&quot;</code></pre>
+                <h3 id="javascript创建对象方式"><a href="#javascript创建对象方式" class="headerlink" title="javascript创建对象方式"></a>javascript创建对象方式</h3><p><code>javascript</code>创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用<code>JSON</code>；但写法有很多种，也能混合使用</p>
+<ul>
+<li>对象字面量的方式</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">person<span class="token operator">=</span><span class="token punctuation">{</span>firstname<span class="token punctuation">:</span><span class="token string">"曹豆芽"</span><span class="token punctuation">,</span>lastname<span class="token punctuation">:</span><span class="token string">"曹"</span><span class="token punctuation">,</span>age<span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">,</span>eyecolor<span class="token punctuation">:</span><span class="token string">"blue"</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>用<code>function</code>来模拟无参的构造函数</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">var</span> person<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//定义一个function，如果使用new"实例化",该function可以看作是一个Class</span>
+        person<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"曹豆芽"</span><span class="token punctuation">;</span>
+        person<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token string">"20"</span><span class="token punctuation">;</span>
+        person<span class="token punctuation">.</span>work<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">" hello..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+person<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>用<code>function</code>来模拟参构造函数来实现（用<code>this</code>关键字定义构造的上下文属性）</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Pet</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>hobby<span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//this作用域：当前对象</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>hobby<span class="token operator">=</span>hobby<span class="token punctuation">;</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>eat<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我叫"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">",我喜欢"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>hobby<span class="token operator">+</span><span class="token string">",是个前端工程师"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> maidou <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Pet</span><span class="token punctuation">(</span><span class="token string">"曹豆芽"</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token string">"coding"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//实例化、创建对象</span>
+maidou<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//调用eat方法</span></code></pre>
+<ul>
+<li>用工厂方式来创建（内置对象）</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> wcDog <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     wcDog<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"阿福"</span><span class="token punctuation">;</span>
+     wcDog<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
+     wcDog<span class="token punctuation">.</span>work<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我是"</span><span class="token operator">+</span>wcDog<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">",吃东西"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     wcDog<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>用原型方式来创建</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+Dog<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"曹豆芽"</span><span class="token punctuation">;</span>
+Dog<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>eat<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"是个憨憨"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> wangcai <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wangcai<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>用混合方式来创建</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">function</span> <span class="token function">Car</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>price<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>price<span class="token operator">=</span>price<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Car<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>sell<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我是"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"，我现在卖"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>price<span class="token operator">+</span><span class="token string">"万元"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> camry <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token string">"曹豆芽"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+camry<span class="token punctuation">.</span><span class="token function">sell</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><a href="https://caoduoya.github.io/">个人博客地址:</a>大家可以看看</p>
+
             </div>
             <hr/>
 
@@ -450,7 +503,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/01/git-de-shi-yong/">http://caoduoya.github.io/2020/03/01/git-de-shi-yong/</a>
+                    <a href="http://caoduoya.github.io/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/">http://caoduoya.github.io/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,8 +541,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
                         </div>
@@ -655,92 +708,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/01/vue-de-lu-you-shou-wei/">
+                <a href="/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="vue的路由守卫">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="javascript创建对象方式">
                         
-                        <span class="card-title">vue的路由守卫</span>
+                        <span class="card-title">javascript创建对象方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vue的路由守卫vue路由守卫实现代码
-router.beforeEach((to,from,next)=&gt;{
-  if(to.path == &#39;/login&#39;){
-    next();
-  }else{
-    a
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/vue/" class="post-category">
-                                    vue
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/01/git-de-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="git的使用">
-                        
-                        <span class="card-title">git的使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            git的使用1.本地拉取远程仓库代码1.本地新建一个文件夹
-2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)
-git init3.将gitee(码云)中的项目地址复制过来
-git clone &quot;仓库地址&
+                            javascript创建对象方式javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用
+
+对象字面量的方式
+
+person={firstname:"曹豆芽",lastn
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category">
-                                    git
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
@@ -751,8 +752,61 @@ git clone &quot;仓库地址&
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/07/xuan-ran-you-hua-xiang-tan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="渲染优化详谈">
+                        
+                        <span class="card-title">渲染优化详谈</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            渲染优化详谈
+禁止使用iframe（阻塞父文档onload事件）
+iframe会阻塞主页面的Onload事件
+搜索引擎的检索程序无法解读这种页面，不利于SEO
+iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B8%B2%E6%9F%93/" class="post-category">
+                                    渲染
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
                     </a>
                     
                 </div>
