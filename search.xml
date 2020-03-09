@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>异步编程的实现方式</title>
+      <link href="/2020/03/09/yi-bu-bian-cheng-de-shi-xian-fang-shi/"/>
+      <url>/2020/03/09/yi-bu-bian-cheng-de-shi-xian-fang-shi/</url>
+      
+        <content type="html"><![CDATA[<h3 id="异步编程的实现方式"><a href="#异步编程的实现方式" class="headerlink" title="异步编程的实现方式"></a>异步编程的实现方式</h3><ul><li>回调函数<ul><li>优点：简单、容易理解</li><li>缺点：不利于维护，代码耦合高</li></ul></li><li>事件监听(采用时间驱动模式，取决于某个事件是否发生)：<ul><li>优点：容易理解，可以绑定多个事件，每个事件可以指定多个回调函数</li><li>缺点：事件驱动型，流程不够清晰</li></ul></li><li>发布/订阅(观察者模式)<ul><li>类似于事件监听，但是可以通过‘消息中心’，了解现在有多少发布者，多少订阅者</li></ul></li><li>Promise对象<ul><li>优点：可以利用then方法，进行链式写法；可以书写错误时的回调函数；</li><li>缺点：编写和理解，相对比较难</li></ul></li><li>Generator函数<ul><li>优点：函数体内外的数据交换、错误处理机制</li><li>缺点：流程管理不方便</li></ul></li><li>async函数<ul><li>优点：内置执行器、更好的语义、更广的适用性、返回的是Promise、结构清晰。</li><li>缺点：错误处理机制</li></ul></li></ul><h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> js </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>javascript创建对象方式</title>
       <link href="/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/"/>
       <url>/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/</url>

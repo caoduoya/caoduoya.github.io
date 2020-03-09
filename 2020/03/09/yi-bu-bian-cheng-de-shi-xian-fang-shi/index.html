@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git的使用, 曹豆芽">
+    <meta name="keywords" content="异步编程的实现方式, 曹豆芽">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>git的使用 | 曹豆芽</title>
+    <title>异步编程的实现方式 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git的使用</h1>
+                    <h1 class="description center-align post-title">异步编程的实现方式</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/git/" class="post-category">
-                                git
+                            <a href="/categories/js/" class="post-category">
+                                js
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-01
+                    2020-03-09
                 </div>
                 
 
@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    203
+                    248
                 </div>
                 
 
@@ -416,16 +416,38 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><h2 id="1-本地拉取远程仓库代码"><a href="#1-本地拉取远程仓库代码" class="headerlink" title="1.本地拉取远程仓库代码"></a>1.本地拉取远程仓库代码</h2><p>1.本地新建一个文件夹</p>
-<p>2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)</p>
-<pre><code>git init</code></pre><p>3.将gitee(码云)中的项目地址复制过来</p>
-<pre><code>git clone &quot;仓库地址&quot;</code></pre><p>4.执行完之后，就会发现代码已经下载到了我们的新建文件夹中</p>
-<h2 id="2-本地连接已经创建好的仓库"><a href="#2-本地连接已经创建好的仓库" class="headerlink" title="2.本地连接已经创建好的仓库"></a>2.本地连接已经创建好的仓库</h2><p>1.步骤接拉取代码步骤之后</p>
-<p>2.把文件添加到本地版本库</p>
-<pre><code>git add 文件名</code></pre><p>3.将修改提交到仓库</p>
-<pre><code>git commit -m &quot;注释&quot;</code></pre><p>4.关联一个远程仓库</p>
-<pre><code>git remote add origin &quot;仓库地址&quot;</code></pre><p>5.最新修改推送到远程仓库</p>
-<pre><code>git push -u origin &quot;分支名&quot;</code></pre>
+                <h3 id="异步编程的实现方式"><a href="#异步编程的实现方式" class="headerlink" title="异步编程的实现方式"></a>异步编程的实现方式</h3><ul>
+<li>回调函数<ul>
+<li>优点：简单、容易理解</li>
+<li>缺点：不利于维护，代码耦合高</li>
+</ul>
+</li>
+<li>事件监听(采用时间驱动模式，取决于某个事件是否发生)：<ul>
+<li>优点：容易理解，可以绑定多个事件，每个事件可以指定多个回调函数</li>
+<li>缺点：事件驱动型，流程不够清晰</li>
+</ul>
+</li>
+<li>发布/订阅(观察者模式)<ul>
+<li>类似于事件监听，但是可以通过‘消息中心’，了解现在有多少发布者，多少订阅者</li>
+</ul>
+</li>
+<li>Promise对象<ul>
+<li>优点：可以利用then方法，进行链式写法；可以书写错误时的回调函数；</li>
+<li>缺点：编写和理解，相对比较难</li>
+</ul>
+</li>
+<li>Generator函数<ul>
+<li>优点：函数体内外的数据交换、错误处理机制</li>
+<li>缺点：流程管理不方便</li>
+</ul>
+</li>
+<li>async函数<ul>
+<li>优点：内置执行器、更好的语义、更广的适用性、返回的是Promise、结构清晰。</li>
+<li>缺点：错误处理机制</li>
+</ul>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
             </div>
             <hr/>
 
@@ -450,7 +472,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/01/git-de-shi-yong/">http://caoduoya.github.io/2020/03/01/git-de-shi-yong/</a>
+                    <a href="http://caoduoya.github.io/2020/03/09/yi-bu-bian-cheng-de-shi-xian-fang-shi/">http://caoduoya.github.io/2020/03/09/yi-bu-bian-cheng-de-shi-xian-fang-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,8 +510,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
                         </div>
@@ -655,92 +677,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/01/vue-de-lu-you-shou-wei/">
+                <a href="/2020/03/09/yi-bu-bian-cheng-de-shi-xian-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="vue的路由守卫">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="异步编程的实现方式">
                         
-                        <span class="card-title">vue的路由守卫</span>
+                        <span class="card-title">异步编程的实现方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vue的路由守卫vue路由守卫实现代码
-router.beforeEach((to,from,next)=&gt;{
-  if(to.path == &#39;/login&#39;){
-    next();
-  }else{
-    a
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/vue/" class="post-category">
-                                    vue
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/01/git-de-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="git的使用">
-                        
-                        <span class="card-title">git的使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            git的使用1.本地拉取远程仓库代码1.本地新建一个文件夹
-2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)
-git init3.将gitee(码云)中的项目地址复制过来
-git clone &quot;仓库地址&
+                            异步编程的实现方式
+回调函数
+优点：简单、容易理解
+缺点：不利于维护，代码耦合高
+
+
+事件监听(采用时间驱动模式，取决于某个事件是否发生)：
+优点：容易理解，可以绑定多个事件，每个事件可以指定多个回调函数
+缺点：事件驱动型，流程不够清晰
+
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category">
-                                    git
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
@@ -751,8 +727,61 @@ git clone &quot;仓库地址&
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="javascript创建对象方式">
+                        
+                        <span class="card-title">javascript创建对象方式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            javascript创建对象方式javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用
+
+对象字面量的方式
+
+person={firstname:"曹豆芽",lastn
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/js/" class="post-category">
+                                    js
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
