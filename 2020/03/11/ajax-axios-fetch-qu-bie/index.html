@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="了解跨越问题, 曹豆芽">
+    <meta name="keywords" content="ajax、axios、fetch区别, 曹豆芽">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>了解跨越问题 | 曹豆芽</title>
+    <title>ajax、axios、fetch区别 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">了解跨越问题</h1>
+                    <h1 class="description center-align post-title">ajax、axios、fetch区别</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vue/">
-                                <span class="chip bg-color">vue</span>
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/vue/" class="post-category">
-                                vue
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-01
+                    2020-03-11
                 </div>
                 
 
@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    301
+                    322
                 </div>
                 
 
@@ -416,41 +416,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="了解跨域问题"><a href="#了解跨域问题" class="headerlink" title="了解跨域问题?"></a>了解跨域问题?</h3><p>首先了解下浏览器的同源策略 同源策略<code>/SOP（Same origin policy）</code>是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到<code>XSS</code>、<code>CSFR</code>等攻击。所谓同源是指”<strong>协议+域名+端口</strong>“三者相同，即便两个不同的域名指向同一个ip地址，也非同源</p>
-<h4 id="怎样解决跨域问题的呢？"><a href="#怎样解决跨域问题的呢？" class="headerlink" title="怎样解决跨域问题的呢？"></a>怎样解决跨域问题的呢？</h4><ul>
-<li><strong>通过jsonp跨域</strong></li>
+                <h3 id="ajax、axios、fetch区别"><a href="#ajax、axios、fetch区别" class="headerlink" title="ajax、axios、fetch区别"></a>ajax、axios、fetch区别</h3><p><strong>ajax</strong></p>
+<pre class=" language-js"><code class="language-js">$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+   type<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+   url<span class="token punctuation">:</span> url<span class="token punctuation">,</span>
+   data<span class="token punctuation">:</span> data<span class="token punctuation">,</span>
+   dataType<span class="token punctuation">:</span> dataType<span class="token punctuation">,</span>
+   success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+   error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>优缺点：</p>
+<ul>
+<li>本身是针对<code>MVC</code>的编程,不符合现在前端<code>MVVM</code>的浪潮</li>
+<li>基于原生的<code>XHR</code>开发，<code>XHR</code>本身的架构不清晰，已经有了<code>fetch</code>的替代方案</li>
+<li><code>JQuery</code>整个项目太大，单纯使用<code>ajax</code>却要引入整个<code>JQuery</code>非常的不合理（采取个性化打包的方案又不能享受CDN服务）</li>
 </ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-script<span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token string">'text/javascript'</span><span class="token punctuation">;</span>
+<p><strong>axios</strong></p>
+<pre class=" language-js"><code class="language-js"><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    method<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">:</span> <span class="token string">'/user/12345'</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        firstName<span class="token punctuation">:</span> <span class="token string">'Fred'</span><span class="token punctuation">,</span>
+        lastName<span class="token punctuation">:</span> <span class="token string">'Flintstone'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>优缺点：</p>
+<ul>
+<li>从浏览器中创建 <code>XMLHttpRequest</code></li>
+<li>从 <code>node.js</code> 发出 <code>http</code> 请求</li>
+<li>支持 <code>Promise API</code></li>
+<li>拦截请求和响应</li>
+<li>转换请求和响应数据</li>
+<li>取消请求</li>
+<li>自动转换<code>JSON</code>数据</li>
+<li>客户端支持防止<code>CSRF/XSRF</code></li>
+</ul>
+<p><strong>fetch</strong></p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> data <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Oops, error"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// 传参并指定回调执行函数为onBack</span>
-script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'http://www.....:8080/login?user=admin&amp;callback=onBack'</span><span class="token punctuation">;</span>
-document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 回调执行函数</span>
-<span class="token keyword">function</span> <span class="token function">onBack</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">alert</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
+<p>优缺点：</p>
 <ul>
-<li><strong>document.domain + iframe跨域</strong></li>
-</ul>
-<blockquote>
-<p>此方案仅限主域相同，子域不同的跨域应用场景</p>
-</blockquote>
-<p>1.）父窗口：(<a href="http://www.domain.com/a.html" target="_blank" rel="noopener">http://www.domain.com/a.html</a>)</p>
-<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>iframe<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://child.domain.com/b.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
-    document<span class="token punctuation">.</span>domain <span class="token operator">=</span> <span class="token string">'domain.com'</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token string">'admin'</span><span class="token punctuation">;</span>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-<p>2.）子窗口：(<a href="http://child.domain.com/b.html" target="_blank" rel="noopener">http://child.domain.com/b.html</a>)</p>
-<pre class=" language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span>domain <span class="token operator">=</span> <span class="token string">'domain.com'</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 获取父窗口中变量</span>
-<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'get js data from parent ---> '</span> <span class="token operator">+</span> window<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<ul>
-<li><strong>nginx代理跨域</strong></li>
-<li><strong>nodejs中间件代理跨域</strong></li>
-<li><strong>后端在头部信息里面设置安全域名</strong></li>
+<li><code>fetcht</code>只对网络请求报错，对<code>400</code>，<code>500</code>都当做成功的请求，需要封装去处理</li>
+<li><code>fetch</code>默认不会带<code>cookie</code>，需要添加配置项</li>
+<li><code>fetch</code>不支持<code>abort</code>，不支持超时控制，使用<code>setTimeout</code>及<code>Promise.reject</code>的实现的超时控制并不能阻止请求过程继续在后台运行，造成了量的浪费</li>
+<li><code>fetch</code>没有办法原生监测请求的进度，而XHR可以</li>
 </ul>
 
             </div>
@@ -477,7 +498,7 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/01/liao-jie-kua-yue-wen-ti/">http://caoduoya.github.io/2020/03/01/liao-jie-kua-yue-wen-ti/</a>
+                    <a href="http://caoduoya.github.io/2020/03/11/ajax-axios-fetch-qu-bie/">http://caoduoya.github.io/2020/03/11/ajax-axios-fetch-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -515,8 +536,8 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
                                 </a>
                             
                         </div>
@@ -682,49 +703,54 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/01/vue-shi-yong-axios/">
+                <a href="/2020/03/11/ajax-axios-fetch-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="vue使用axios">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="ajax、axios、fetch区别">
                         
-                        <span class="card-title">vue使用axios</span>
+                        <span class="card-title">ajax、axios、fetch区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vue使用axios1.在mina.js中写下面代码
-import Axios from &quot;axios&quot;;
-Vue.prototype.HOST = &quot;http://localhost:4000&quot;;
-
+                            ajax、axios、fetch区别ajax
+$.ajax({
+   type: 'POST',
+   url: url,
+   data: data,
+   dataType: dataType,
+   success: function
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/vue/" class="post-category">
-                                    vue
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
                     </a>
                     
                 </div>
@@ -738,36 +764,35 @@ Vue.prototype.HOST = &quot;http://localhost:4000&quot;;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/vue-de-lu-you-shou-wei/">
+                <a href="/2020/03/10/shu-zu-qu-chong-fang-fa-de-fang-shi-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="vue的路由守卫">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="数组去重方法的方式总结">
                         
-                        <span class="card-title">vue的路由守卫</span>
+                        <span class="card-title">数组去重方法的方式总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vue的路由守卫vue路由守卫实现代码
-router.beforeEach((to,from,next)=&gt;{
-  if(to.path == &#39;/login&#39;){
-    next();
-  }else{
-    a
+                            数组去重方法的方式总结方法一、利用ES6 Set去重（ES6中最常用）
+function unique (arr) {
+  return Array.from(new Set(arr))
+}
+var arr = [1,1,'true','t
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/vue/" class="post-category">
-                                    vue
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
@@ -777,8 +802,8 @@ router.beforeEach((to,from,next)=&gt;{
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
