@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="渲染优化详谈, 曹豆芽">
+    <meta name="keywords" content="谈谈变量提升？, 曹豆芽">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>渲染优化详谈 | 曹豆芽</title>
+    <title>谈谈变量提升？ | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">渲染优化详谈</h1>
+                    <h1 class="description center-align post-title">谈谈变量提升？</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">前端</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B8%B2%E6%9F%93/" class="post-category">
-                                渲染
+                            <a href="/categories/js/" class="post-category">
+                                js
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-07
+                    2020-03-14
                 </div>
                 
 
@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    478
+                    417
                 </div>
                 
 
@@ -416,36 +416,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="渲染优化详谈"><a href="#渲染优化详谈" class="headerlink" title="渲染优化详谈"></a>渲染优化详谈</h3><ul>
-<li>禁止使用<code>iframe</code>（阻塞父文档<code>onload</code>事件）<ul>
-<li><code>iframe</code>会阻塞主页面的<code>Onload</code>事件</li>
-<li>搜索引擎的检索程序无法解读这种页面，不利于SEO</li>
-<li><code>iframe</code>和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载</li>
-<li>使用<code>iframe</code>之前需要考虑这两个缺点。如果需要使用<code>iframe</code>，最好是通过<code>javascript</code></li>
-<li>动态给<code>iframe</code>添加<code>src</code>属性值，这样可以绕开以上两个问题</li>
+                <h3 id="谈谈变量提升？"><a href="#谈谈变量提升？" class="headerlink" title="谈谈变量提升？"></a>谈谈变量提升？</h3><p>当执行 JS 代码时，会生成执行环境，只要代码不是写在函数中的，就是在全局执行环境中，函数中的代码会产生函数执行环境，只此两种执行环境</p>
+<ul>
+<li>接下来让我们看一个老生常谈的例子，<code>var</code></li>
 </ul>
-</li>
-<li>禁止使用<code>gif</code>图片实现<code>loading</code>效果（降低<code>CPU</code>消耗，提升渲染性能）</li>
-<li>使用<code>CSS3</code>代码代替<code>JS</code>动画（尽可能避免重绘重排以及回流）</li>
-<li>对于一些小图标，可以使用base64位编码，以减少网络请求。但不建议大图使用，比较耗费<code>CPU</code><ul>
-<li>小图标优势在于<ul>
-<li>减少<code>HTTP</code>请求</li>
-<li>避免文件跨域</li>
-<li>修改及时生效</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>页面头部的<code></code> 会阻塞页面；（因为 <code>Renderer</code>进程中 <code>JS</code>线程和渲染线程是互斥的）</li>
-<li>页面中空的 <code>href</code> 和 <code>src</code> 会阻塞页面其他资源的加载 (阻塞下载进程)</li>
-<li>网页<code>gzip</code>，<code>CDN</code>托管，<code>data</code>缓存 ，图片服务器</li>
-<li>前端模板 JS+数据，减少由于<code>HTML</code>标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</li>
-<li>用<code>innerHTML</code>代替<code>DOM</code>操作，减少<code>DOM</code>操作次数，优化<code>javascript</code>性能</li>
-<li>当需要设置的样式很多时设置<code>className</code>而不是直接操作<code>style</code></li>
-<li>少用全局变量、缓存<code>DOM</code>节点查找的结果。减少<code>IO</code>读取操作</li>
-<li>图片预加载，将样式表放在顶部，将脚本放在底部 加上时间戳</li>
-<li>对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘<code>IO</code></li>
-</ul>
+<pre class=" language-js"><code class="language-js"><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// call b</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// undefined</span>
+
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">'Hello world'</span>
+
+<span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call b'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>变量提升</p>
+<p>这是因为函数和变量提升的原因。通常提升的解释是说将声明的代码移动到了顶部，这其实没有什么错误，便于大家理解。但是更准确的解释应该是：在生成执行环境时，会有两个阶段。第一个阶段是创建的阶段，JS 解释器会找出需要提升的变量和函数，并且给他们提前在内存中开辟好空间，函数的话会将整个函数存入内存中，变量只声明并且赋值为 <code>undefined</code>，所以在第二个阶段，也就是代码执行阶段，我们可以直接提前使用</p>
+<p>在提升的过程中，相同的函数会覆盖上一个函数，并且函数优先于变量提升</p>
+<pre class=" language-js"><code class="language-js"><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// call b second</span>
+
+<span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call b fist'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call b second'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token string">'Hello world'</span></code></pre>
+<p>复制代码<code>var</code> 会产生很多错误，所以在 <code>ES6</code>中引入了 <code>let</code>。<code>let</code> 不能在声明前使用，但是这并不是常说的 <code>let</code> 不会提升，<code>let</code> 提升了，在第一阶段内存也已经为他开辟好了空间，但是因为这个声明的特性导致了并不能在声明前使用</p>
 
             </div>
             <hr/>
@@ -471,7 +466,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/07/xuan-ran-you-hua-xiang-tan/">http://caoduoya.github.io/2020/03/07/xuan-ran-you-hua-xiang-tan/</a>
+                    <a href="http://caoduoya.github.io/2020/03/14/tan-tan-bian-liang-ti-sheng/">http://caoduoya.github.io/2020/03/14/tan-tan-bian-liang-ti-sheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -509,8 +504,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">前端</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
                         </div>
@@ -676,33 +671,35 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/">
+                <a href="/2020/03/14/tan-tan-bian-liang-ti-sheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="javascript创建对象方式">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="谈谈变量提升？">
                         
-                        <span class="card-title">javascript创建对象方式</span>
+                        <span class="card-title">谈谈变量提升？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            javascript创建对象方式javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用
+                            谈谈变量提升？当执行 JS 代码时，会生成执行环境，只要代码不是写在函数中的，就是在全局执行环境中，函数中的代码会产生函数执行环境，只此两种执行环境
 
-对象字面量的方式
+接下来让我们看一个老生常谈的例子，var
 
-person={firstname:"曹豆芽",lastn
+b() // call b
+console.
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -715,6 +712,7 @@ person={firstname:"曹豆芽",lastn
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -733,34 +731,33 @@ person={firstname:"曹豆芽",lastn
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/06/http-xiang-guan-zhi-shi/">
+                <a href="/2020/03/13/jquery-extend-yu-jquery-fn-extend-de-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="http相关知识">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="jQuery.extend与jQuery.fn.extend的区别">
                         
-                        <span class="card-title">http相关知识</span>
+                        <span class="card-title">jQuery.extend与jQuery.fn.extend的区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            HTTP相关知识1. HTTP有什么特点
-简单快速：客户向服务器请求服务时，只需传送请求方法和路径
-灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由 Content-Type 加以标记
-无连接：无连接的含义是限制每次连接只处理一个
+                            jQuery.extend 与 jQuery.fn.extend 的区别
+$.fn.extend() 和 $.extend() 是 jQuery 为扩展插件提拱了两个方法
+$.extend(object); // 为jQuery添加“静态方
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/http/" class="post-category">
-                                    http
+                            <a href="/categories/jq/" class="post-category">
+                                    jq
                                 </a>
                             
                             
@@ -770,8 +767,8 @@ person={firstname:"曹豆芽",lastn
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">网络</span>
+                    <a href="/tags/jq/">
+                        <span class="chip bg-color">jq</span>
                     </a>
                     
                 </div>

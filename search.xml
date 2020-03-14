@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>谈谈变量提升？</title>
+      <link href="/2020/03/14/tan-tan-bian-liang-ti-sheng/"/>
+      <url>/2020/03/14/tan-tan-bian-liang-ti-sheng/</url>
+      
+        <content type="html"><![CDATA[<h3 id="谈谈变量提升？"><a href="#谈谈变量提升？" class="headerlink" title="谈谈变量提升？"></a>谈谈变量提升？</h3><p>当执行 JS 代码时，会生成执行环境，只要代码不是写在函数中的，就是在全局执行环境中，函数中的代码会产生函数执行环境，只此两种执行环境</p><ul><li>接下来让我们看一个老生常谈的例子，<code>var</code></li></ul><pre class=" language-js"><code class="language-js"><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// call b</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// undefined</span><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">'Hello world'</span><span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call b'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre><p>变量提升</p><p>这是因为函数和变量提升的原因。通常提升的解释是说将声明的代码移动到了顶部，这其实没有什么错误，便于大家理解。但是更准确的解释应该是：在生成执行环境时，会有两个阶段。第一个阶段是创建的阶段，JS 解释器会找出需要提升的变量和函数，并且给他们提前在内存中开辟好空间，函数的话会将整个函数存入内存中，变量只声明并且赋值为 <code>undefined</code>，所以在第二个阶段，也就是代码执行阶段，我们可以直接提前使用</p><p>在提升的过程中，相同的函数会覆盖上一个函数，并且函数优先于变量提升</p><pre class=" language-js"><code class="language-js"><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// call b second</span><span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call b fist'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'call b second'</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token string">'Hello world'</span></code></pre><p>复制代码<code>var</code> 会产生很多错误，所以在 <code>ES6</code>中引入了 <code>let</code>。<code>let</code> 不能在声明前使用，但是这并不是常说的 <code>let</code> 不会提升，<code>let</code> 提升了，在第一阶段内存也已经为他开辟好了空间，但是因为这个声明的特性导致了并不能在声明前使用</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> js </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>jQuery.extend与jQuery.fn.extend的区别</title>
       <link href="/2020/03/13/jquery-extend-yu-jquery-fn-extend-de-qu-bie/"/>
       <url>/2020/03/13/jquery-extend-yu-jquery-fn-extend-de-qu-bie/</url>
