@@ -205,6 +205,31 @@
     
     <entry>
       <title>谈hybrid</title>
+      <link href="/2020/03/05/vue-sheng-ming-zhou-qi-gou-zi/"/>
+      <url>/2020/03/05/vue-sheng-ming-zhou-qi-gou-zi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue生命周期钩子"><a href="#vue生命周期钩子" class="headerlink" title="vue生命周期钩子"></a>vue生命周期钩子</h1><h2 id="生命函数的介绍"><a href="#生命函数的介绍" class="headerlink" title="生命函数的介绍"></a>生命函数的介绍</h2><p>Vue 实例从开始创建、初始化数据、编译模板、挂载Dom和渲染、更新和渲染、卸载等一系列过程，这是 Vue 的生命周期</p><h2 id="生命函数的一一讲解"><a href="#生命函数的一一讲解" class="headerlink" title="生命函数的一一讲解"></a>生命函数的一一讲解</h2><h3 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h3><p>实例还没有完全创建出来之前执行</p><h3 id="created"><a href="#created" class="headerlink" title="created"></a>created</h3><p>实例创建完成后立即调用</p><h3 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h3><p>在挂载之前被调用</p><h3 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h3><p>表示内存的模板已经渲染页面中，此时数据已经可以经过Vue的编译</p><h3 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h3><p>当页面数据发生了改变，就会去触发，当前页面的数据不会改变，内存的数据发生改变,数据没有同步</p><h3 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h3><p>当事件执行的时候，页面的数据已经和内存里面的是一致的，数据已经同步</p><h3 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h3><p>组件销毁的时候去执行的</p><h3 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h3><p>事件执行后，所有的对于vue实例的指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>谈hybrid</title>
       <link href="/2020/03/05/tan-hybrid/"/>
       <url>/2020/03/05/tan-hybrid/</url>
       
