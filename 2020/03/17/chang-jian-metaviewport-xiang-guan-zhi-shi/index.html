@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深浅拷贝, 曹豆芽">
+    <meta name="keywords" content="常见metaviewport相关知识, 曹豆芽">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>深浅拷贝 | 曹豆芽</title>
+    <title>常见metaviewport相关知识 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深浅拷贝</h1>
+                    <h1 class="description center-align post-title">常见metaviewport相关知识</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/js/">
-                                <span class="chip bg-color">js</span>
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/js/" class="post-category">
-                                js
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-03-17
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    386
+                    520
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -416,64 +416,38 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h2><p><strong>浅拷贝</strong></p>
-<p>首先可以通过 Object.assign来解决这个问题，很多人认为这个函数是用来深拷贝的。其实并不是，Object.assign 只会拷贝所有的属性值到新的对象中，如果属性值是对象的话，拷贝的是地址，所以并不是深拷贝</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  age<span class="token punctuation">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-a<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">2</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>age<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1</span></code></pre>
-<p>另外我们还可以通过展开运算符 … 来实现浅拷贝</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  age<span class="token punctuation">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>a <span class="token punctuation">}</span>
-a<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">2</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>age<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1</span></code></pre>
-<p>通常浅拷贝就能解决大部分问题了，但是当我们遇到如下情况就可能需要使用到深拷贝了</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  age<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  jobs<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    first<span class="token punctuation">:</span> <span class="token string">'FE'</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>a <span class="token punctuation">}</span>
-a<span class="token punctuation">.</span>jobs<span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token string">'native'</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>jobs<span class="token punctuation">.</span>first<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// native</span></code></pre>
-<p>浅拷贝只解决了第一层的问题，如果接下去的值中还有对象的话，么就又回到最开始的话题了，两者享有相同的地址。要解决这个问题，我们就得使用深拷贝了。</p>
-<p><strong>深拷贝</strong></p>
-<p>这个问题通常可以通过 JSON.parse(JSON.stringify(object)) 来解决。</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  age<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  jobs<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    first<span class="token punctuation">:</span> <span class="token string">'FE'</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
-a<span class="token punctuation">.</span>jobs<span class="token punctuation">.</span>first <span class="token operator">=</span> <span class="token string">'native'</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>jobs<span class="token punctuation">.</span>first<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// FE</span></code></pre>
-<p><strong>但是该方法也是有局限性的</strong>：</p>
-<ul>
-<li>会忽略 undefined</li>
-<li>会忽略 symbol</li>
-<li>不能序列化函数</li>
-<li>不能解决循环引用的对象</li>
-</ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  b<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    c<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-    d<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-obj<span class="token punctuation">.</span>c <span class="token operator">=</span> obj<span class="token punctuation">.</span>b
-obj<span class="token punctuation">.</span>e <span class="token operator">=</span> obj<span class="token punctuation">.</span>a
-obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c <span class="token operator">=</span> obj<span class="token punctuation">.</span>c
-obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span>d <span class="token operator">=</span> obj<span class="token punctuation">.</span>b
-obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span>e <span class="token operator">=</span> obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c
-<span class="token keyword">let</span> newObj <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newObj<span class="token punctuation">)</span></code></pre>
+                <h3 id="常见meta-viewport相关知识"><a href="#常见meta-viewport相关知识" class="headerlink" title="常见meta viewport相关知识"></a>常见meta viewport相关知识</h3><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>  <span class="token comment" spellcheck="true">&lt;!--H5标准声明，使用 HTML5 doctype，不区分大小写--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span>”en”</span><span class="token punctuation">></span></span> <span class="token comment" spellcheck="true">&lt;!--标准的 lang 属性写法--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span>’utf-8′</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!--声明文档使用的字符编码--></span>
+&lt;meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1″/>   <span class="token comment" spellcheck="true">&lt;!--优先使用 IE 最新版本和 Chrome--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”description”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”不超过150个字符”/</span><span class="token punctuation">></span></span>       <span class="token comment" spellcheck="true">&lt;!--页面描述--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”keywords”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>””/</span><span class="token punctuation">></span></span>     <span class="token comment" spellcheck="true">&lt;!-- 页面关键词--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”author”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”name,</span> <span class="token attr-name">email@gmail.com”</span><span class="token punctuation">/></span></span>    <span class="token comment" spellcheck="true">&lt;!--网页作者--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”robots”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”index,follow”/</span><span class="token punctuation">></span></span>      <span class="token comment" spellcheck="true">&lt;!--搜索引擎抓取--></span>
+&lt;meta name=”viewport” content=”initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no”> <span class="token comment" spellcheck="true">&lt;!--为移动设备添加 viewport--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”apple-mobile-web-app-title”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”标题”</span><span class="token punctuation">></span></span> <span class="token comment" spellcheck="true">&lt;!--iOS 设备 begin--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”apple-mobile-web-app-capable”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”yes”/</span><span class="token punctuation">></span></span>  <span class="token comment" spellcheck="true">&lt;!--添加到主屏后的标题（iOS 6 新增）
+是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏--></span>
+&lt;meta name=”apple-itunes-app” content=”app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL”>
+<span class="token comment" spellcheck="true">&lt;!--添加智能 App 广告条 Smart App Banner（iOS 6+ Safari）--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”apple-mobile-web-app-status-bar-style”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”black”/</span><span class="token punctuation">></span></span>
+&lt;meta name=”format-detection” content=”telphone=no, email=no”/>  <span class="token comment" spellcheck="true">&lt;!--设置苹果工具栏颜色--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”renderer”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”webkit”</span><span class="token punctuation">></span></span> <span class="token comment" spellcheck="true">&lt;!-- 启用360浏览器的极速模式(webkit)--></span>
+&lt;meta http-equiv=”X-UA-Compatible” content=”IE=edge”>     <span class="token comment" spellcheck="true">&lt;!--避免IE使用兼容模式--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span>”Cache-Control”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”no-siteapp”</span> <span class="token punctuation">/></span></span>    <span class="token comment" spellcheck="true">&lt;!--不让百度转码--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”HandheldFriendly”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”true”</span><span class="token punctuation">></span></span>     <span class="token comment" spellcheck="true">&lt;!--针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”MobileOptimized”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”320″</span><span class="token punctuation">></span></span>   <span class="token comment" spellcheck="true">&lt;!--微软的老式浏览器--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”screen-orientation”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”portrait”</span><span class="token punctuation">></span></span>   <span class="token comment" spellcheck="true">&lt;!--uc强制竖屏--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”x5-orientation”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”portrait”</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!--QQ强制竖屏--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”full-screen”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”yes”</span><span class="token punctuation">></span></span>              <span class="token comment" spellcheck="true">&lt;!--UC强制全屏--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”x5-fullscreen”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”true”</span><span class="token punctuation">></span></span>       <span class="token comment" spellcheck="true">&lt;!--QQ强制全屏--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”browsermode”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”application”</span><span class="token punctuation">></span></span>   <span class="token comment" spellcheck="true">&lt;!--UC应用模式--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”x5-page-mode”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”app”</span><span class="token punctuation">></span></span>   <span class="token comment" spellcheck="true">&lt;!-- QQ应用模式--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>”msapplication-tap-highlight”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”no”</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!--windows phone 点击无高亮
+设置页面不缓存--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span>”pragma”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”no-cache”</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span>”cache-control”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”no-cache”</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span>”expires”</span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span>”0″</span><span class="token punctuation">></span></span></code></pre>
 
             </div>
             <hr/>
@@ -499,7 +473,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/03/shen-qian-kao-bei/">http://caoduoya.github.io/2020/03/03/shen-qian-kao-bei/</a>
+                    <a href="http://caoduoya.github.io/2020/03/17/chang-jian-metaviewport-xiang-guan-zhi-shi/">http://caoduoya.github.io/2020/03/17/chang-jian-metaviewport-xiang-guan-zhi-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +511,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/js/">
-                                    <span class="chip bg-color">js</span>
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
                                 </a>
                             
                         </div>
@@ -704,49 +678,49 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/04/qian-duan-xing-neng-you-hua/">
+                <a href="/2020/03/17/chang-jian-metaviewport-xiang-guan-zhi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="前端性能优化">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="常见metaviewport相关知识">
                         
-                        <span class="card-title">前端性能优化</span>
+                        <span class="card-title">常见metaviewport相关知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前端性能详谈自己去将关于性能的优化的一些知识进行了整理，方便自己去学习和大家阅读
-1 DNS 预解析&lt;link rel="dns-prefetch" href="//blog.poetries.top">
-2 缓存
-缓存对于前端性能优
+                            常见meta viewport相关知识&lt;!DOCTYPE html>  &lt;!--H5标准声明，使用 HTML5 doctype，不区分大小写-->
+&lt;head lang=”en”> &lt;!--标准的 lang 属性写法
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category">
-                                    性能优化
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
-                        <span class="chip bg-color">性能优化</span>
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
                     </a>
                     
                 </div>
@@ -760,28 +734,24 @@ console<span class="token punctuation">.</span><span class="token function">log<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/02/js-bi-bao-xiang-tan/">
+                <a href="/2020/03/16/dao-ji-shi-wu-chai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="js闭包详谈">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="倒计时误差">
                         
-                        <span class="card-title">js闭包详谈</span>
+                        <span class="card-title">倒计时误差</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js闭包详谈闭包的定义很简单：函数 A 返回了一个函数 B，并且函数 B 中使用了函数 A 的变量，函数 B 就被称为闭包。
-function A() {
-  let a = 1
-  function B() {
-      console
+                            setTimeout 倒计时误差JS 是单线程的，所以 setTimeout 的误差其实是无法被完全解决的，原因有很多，可能是回调中的，有可能是浏览器中的各种事件导致。这也是为什么页面开久了，定时器会不准的原因，当然我们可以通过一定的办法去
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
                             </span>
                         <span class="publish-author">
                             
