@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>箭头函数的this指向哪里</title>
+      <link href="/2020/03/19/jian-tou-han-shu-de-this-zhi-xiang-na-li/"/>
+      <url>/2020/03/19/jian-tou-han-shu-de-this-zhi-xiang-na-li/</url>
+      
+        <content type="html"><![CDATA[<h2 id="箭头函数的this指向哪里"><a href="#箭头函数的this指向哪里" class="headerlink" title="箭头函数的this指向哪里"></a>箭头函数的this指向哪里</h2><p>箭头函数不同于传统JavaScript中的函数,箭头函数并没有属于自己的this,它的所谓的this是捕获其所在上下文的 this 值，作为自己的 this 值,并且由于没有属于自己的this,而箭头函数是不会被new调用的，这个所谓的this也不会被改变.</p><p>我们可以用Babel理解一下箭头函数:</p><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// ES6</span><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>    <span class="token function">getArrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span> </code></pre><p>转化后</p><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// ES5，由 Babel 转译</span><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>    getArrow<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token function">getArrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">var</span> _this <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>_this <span class="token operator">===</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> es6 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> es6 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CSS相关布局小知识</title>
       <link href="/2020/03/18/css-xiang-guan-bu-ju-xiao-zhi-shi/"/>
       <url>/2020/03/18/css-xiang-guan-bu-ju-xiao-zhi-shi/</url>
