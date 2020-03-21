@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vue中computed和watch有什么区别?</title>
+      <link href="/2020/03/21/vue-zhong-computed-he-watch-you-shi-me-qu-bie/"/>
+      <url>/2020/03/21/vue-zhong-computed-he-watch-you-shi-me-qu-bie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="vue中computed和watch有什么区别"><a href="#vue中computed和watch有什么区别" class="headerlink" title="vue中computed和watch有什么区别?"></a>vue中computed和watch有什么区别?</h2><p>computed:</p><ol><li><code>computed</code>是计算属性,也就是计算值,它更多用于计算值的场景</li><li><code>computed</code>具有缓存性,computed的值在getter执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取computed的值时才会重新调用对应的getter来计算</li><li><code>computed</code>适用于计算比较消耗性能的计算场景</li></ol><p>watch:</p><ol><li>更多的是「观察」的作用,类似于某些数据的监听回调,用于观察<code>props</code> <code>$emit</code>或者本组件的值,当数据变化时来执行回调进行后续操作</li><li>无缓存性，页面重新渲染时值不变化也会执行</li></ol><p>小结:</p><ol><li>当我们要进行数值计算,而且依赖于其他数据，那么把这个数据设计为computed</li><li>如果你需要在某个数据变化时做一些事情，使用watch来观察这个数据变化</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>对MVVM的理解?</title>
       <link href="/2020/03/20/dui-mvvm-de-li-jie/"/>
       <url>/2020/03/20/dui-mvvm-de-li-jie/</url>

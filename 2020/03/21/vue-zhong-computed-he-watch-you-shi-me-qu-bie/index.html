@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="对MVVM的理解?, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="vue中computed和watch有什么区别?, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>对MVVM的理解? | 曹豆芽</title>
+    <title>vue中computed和watch有什么区别? | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">对MVVM的理解?</h1>
+                    <h1 class="description center-align post-title">vue中computed和watch有什么区别?</h1>
                 </div>
             </div>
         </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-20
+                    2020-03-21
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    723
+                    235
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -416,21 +416,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="对MVVM的理解"><a href="#对MVVM的理解" class="headerlink" title="对MVVM的理解?"></a>对MVVM的理解?</h2><h3 id="MVVM是什么"><a href="#MVVM是什么" class="headerlink" title="MVVM是什么?"></a>MVVM是什么?</h3><p>MVVM 模式，顾名思义即 Model-View-ViewModel 模式。它萌芽于2005年微软推出的基于 Windows 的用户界面框架 WPF ，前端最早的 MVVM 框架 knockout 在2010年发布。</p>
-<p>Model 层: 对应数据层的域模型，它主要做域模型的同步。通过 Ajax/fetch 等 API 完成客户端和服务端业务 Model 的同步。在层间关系里，它主要用于抽象出 ViewModel 中视图的 Model。</p>
-<p>View 层:作为视图模板存在，在 MVVM 里，整个 View 是一个动态模板。除了定义结构、布局外，它展示的是 ViewModel 层的数据和状态。View 层不负责处理状态，View 层做的是 数据绑定的声明、 指令的声明、 事件绑定的声明。</p>
-<p>ViewModel 层:把 View 需要的层数据暴露，并对 View 层的 数据绑定声明、 指令声明、 事件绑定声明 负责，也就是处理 View 层的具体业务逻辑。ViewModel 底层会做好绑定属性的监听。当 ViewModel 中数据变化，View 层会得到更新；而当 View 中声明了数据的双向绑定（通常是表单元素），框架也会监听 View 层（表单）值的变化。一旦值变化，View 层绑定的 ViewModel 中的数据也会得到自动更新。</p>
-<h3 id="MVVM的优缺点"><a href="#MVVM的优缺点" class="headerlink" title="MVVM的优缺点?"></a>MVVM的优缺点?</h3><p>优点:</p>
+                <h2 id="vue中computed和watch有什么区别"><a href="#vue中computed和watch有什么区别" class="headerlink" title="vue中computed和watch有什么区别?"></a>vue中computed和watch有什么区别?</h2><p>computed:</p>
 <ol>
-<li>分离视图（View）和模型（Model）,降低代码耦合，提高视图或者逻辑的重用性: 比如视图（View）可以独立于Model变化和修改，一个ViewModel可以绑定不同的”View”上，当View变化的时候Model不可以不变，当Model变化的时候View也可以不变。你可以把一些视图逻辑放在一个ViewModel里面，让很多view重用这段视图逻辑</li>
-<li>提高可测试性: ViewModel的存在可以帮助开发者更好地编写测试代码</li>
-<li>自动更新dom: 利用双向绑定,数据更新后视图自动更新,让开发者从繁琐的手动dom中解放</li>
+<li><code>computed</code>是计算属性,也就是计算值,它更多用于计算值的场景</li>
+<li><code>computed</code>具有缓存性,computed的值在getter执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取computed的值时才会重新调用对应的getter来计算</li>
+<li><code>computed</code>适用于计算比较消耗性能的计算场景</li>
 </ol>
-<p>缺点:</p>
+<p>watch:</p>
 <ol>
-<li>Bug很难被调试: 因为使用双向绑定的模式，当你看到界面异常了，有可能是你View的代码有Bug，也可能是Model的代码有问题。数据绑定使得一个位置的Bug被快速传递到别的位置，要定位原始出问题的地方就变得不那么容易了。另外，数据绑定的声明是指令式地写在View的模版当中的，这些内容是没办法去打断点debug的</li>
-<li>一个大的模块中model也会很大，虽然使用方便了也很容易保证了数据的一致性，当时长期持有，不释放内存就造成了花费更多的内存</li>
-<li>对于大型的图形应用程序，视图状态较多，ViewModel的构建和维护的成本都会比较高</li>
+<li>更多的是「观察」的作用,类似于某些数据的监听回调,用于观察<code>props</code> <code>$emit</code>或者本组件的值,当数据变化时来执行回调进行后续操作</li>
+<li>无缓存性，页面重新渲染时值不变化也会执行</li>
+</ol>
+<p>小结:</p>
+<ol>
+<li>当我们要进行数值计算,而且依赖于其他数据，那么把这个数据设计为computed</li>
+<li>如果你需要在某个数据变化时做一些事情，使用watch来观察这个数据变化</li>
 </ol>
 
             </div>
@@ -457,7 +457,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/20/dui-mvvm-de-li-jie/">http://caoduoya.github.io/2020/03/20/dui-mvvm-de-li-jie/</a>
+                    <a href="http://caoduoya.github.io/2020/03/21/vue-zhong-computed-he-watch-you-shi-me-qu-bie/">http://caoduoya.github.io/2020/03/21/vue-zhong-computed-he-watch-you-shi-me-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -662,9 +662,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/21/vue-zhong-computed-he-watch-you-shi-me-qu-bie/">
                     <div class="card-image">
@@ -685,9 +686,9 @@ computed具有缓存性,computed的值在getter执行后是会缓存的，只有
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -700,6 +701,7 @@ computed具有缓存性,computed的值在getter执行后是会缓存的，只有
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -718,31 +720,31 @@ computed具有缓存性,computed的值在getter执行后是会缓存的，只有
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/19/jian-tou-han-shu-de-this-zhi-xiang-na-li/">
+                <a href="/2020/03/20/dui-mvvm-de-li-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="箭头函数的this指向哪里">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="对MVVM的理解?">
                         
-                        <span class="card-title">箭头函数的this指向哪里</span>
+                        <span class="card-title">对MVVM的理解?</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            箭头函数的this指向哪里箭头函数不同于传统JavaScript中的函数,箭头函数并没有属于自己的this,它的所谓的this是捕获其所在上下文的 this 值，作为自己的 this 值,并且由于没有属于自己的this,而箭头函数是不会被n
+                            对MVVM的理解?MVVM是什么?MVVM 模式，顾名思义即 Model-View-ViewModel 模式。它萌芽于2005年微软推出的基于 Windows 的用户界面框架 WPF ，前端最早的 MVVM 框架 knockout 在201
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/es6/" class="post-category">
-                                    es6
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
                                 </a>
                             
                             
@@ -752,8 +754,8 @@ computed具有缓存性,computed的值在getter执行后是会缓存的，只有
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/es6/">
-                        <span class="chip bg-color">es6</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
