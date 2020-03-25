@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>如何通过JS判断一个数组</title>
+      <link href="/2020/03/25/ru-he-tong-guo-js-pan-duan-yi-ge-shu-zu/"/>
+      <url>/2020/03/25/ru-he-tong-guo-js-pan-duan-yi-ge-shu-zu/</url>
+      
+        <content type="html"><![CDATA[<h3 id="如何通过JS判断一个数组"><a href="#如何通过JS判断一个数组" class="headerlink" title="如何通过JS判断一个数组"></a>如何通过JS判断一个数组</h3><p>  instanceof方法</p><ul><li><code>instanceof</code> 运算符是用来测试一个对象是否在其原型链原型构造函数的属性</li></ul><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>arr <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span></code></pre><p>  constructor方法</p><ul><li><code>constructor</code>属性返回对创建此对象的数组函数的引用，就是返回对象相对应的构造函数</li></ul><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>arr<span class="token punctuation">.</span>constructor <span class="token operator">==</span> Array<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//true</span></code></pre><ul><li>最简单的方法<ul><li>这种写法，是 <code>jQuery</code> 正在使用的</li></ul></li></ul><pre class=" language-javascript"><code class="language-javascript">Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'[object Array]'</span><span class="token comment" spellcheck="true">// 利用这个方法，可以写一个返回数据类型的方法</span><span class="token keyword">var</span> isType <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token keyword">return</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><ul><li>方法<code>isArray()</code></li></ul><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//true</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//false</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> js </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>怎么去实现一个简洁版的promise？</title>
       <link href="/2020/03/24/zen-me-qu-shi-xian-yi-ge-jian-ji-ban-de-promise/"/>
       <url>/2020/03/24/zen-me-qu-shi-xian-yi-ge-jian-ji-ban-de-promise/</url>
