@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="谈hybrid, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="bind,call,apply区别, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>谈hybrid | 曹豆芽</title>
+    <title>bind,call,apply区别 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">谈hybrid</h1>
+                    <h1 class="description center-align post-title">bind,call,apply区别</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%8F/">
-                                <span class="chip bg-color">混合式</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/app/" class="post-category">
-                                app
+                            <a href="/categories/js/" class="post-category">
+                                js
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-05
+                    2020-03-26
                 </div>
                 
 
@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    227
+                    432
                 </div>
                 
 
@@ -416,26 +416,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="谈hybrid"><a href="#谈hybrid" class="headerlink" title="谈hybrid"></a>谈hybrid</h1><p>hybrid为”混合”,是前端和客户端的混合开发,需要前端开发人员和客户端开发人员配合完成,在某个环节也会涉及到server端</p>
-<h2 id="hybrid和h5的区别"><a href="#hybrid和h5的区别" class="headerlink" title="hybrid和h5的区别"></a>hybrid和h5的区别</h2><p>相比优点</p>
-<p>1.体验更好，和NA体验基本上是一致的</p>
-<p>2.看快速迭代，不需要app审核</p>
-<p>相比缺点</p>
-<p>1.开发成本高，联调，测试，查bug较麻烦</p>
-<p>2.运维成本高。</p>
-<p>适用场景</p>
+                <h3 id="bind、call、apply-区别"><a href="#bind、call、apply-区别" class="headerlink" title="bind、call、apply 区别"></a>bind、call、apply 区别</h3><ul>
+<li><code>call</code> 和 <code>apply</code> 都是为了解决改变 <code>this</code> 的指向。作用都是相同的，只是传参的方式不同。</li>
+<li>除了第一个参数外，<code>call</code> 可以接收一个参数列表，<code>apply</code> 只接受一个参数数组</li>
+</ul>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">getValue</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+getValue<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">'yck'</span><span class="token punctuation">,</span> <span class="token string">'24'</span><span class="token punctuation">)</span>
+getValue<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'yck'</span><span class="token punctuation">,</span> <span class="token string">'24'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p><code>bind</code> 和其他两个方法作用也是一致的，只是该方法会返回一个函数。并且我们可以通过 <code>bind</code> 实现柯里化</p>
+<h3 id="如何实现一个-bind-函数"><a href="#如何实现一个-bind-函数" class="headerlink" title="如何实现一个 bind 函数"></a>如何实现一个 bind 函数</h3><p>对于实现以下几个函数，可以从几个方面思考</p>
 <ul>
-<li>不是所有场景都适合使用 <code>hybrid</code></li>
-<li>使用 <code>NA</code> ：体验要求极致，变化不频繁</li>
-<li>使用 <code>hybrid</code> ：体验要求高，变化频繁</li>
-<li>使用 <code>h5</code> ：体验无要求，不常用</li>
+<li>不传入第一个参数，那么默认为 <code>window</code></li>
+<li>改变了 <code>this</code> 指向，让新的对象可以执行该函数。那么思路是否可以变成给新的对象添加一个函数，然后在执行完以后删除？</li>
 </ul>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><ul>
-<li>前端做好静态页面（<code>html js css</code>），将文件交给客户端</li>
-<li>客户端拿到前端静态页面，以文件形式存储在 <code>app</code> 中</li>
-<li>客户端在一个 <code>webview</code> 中</li>
-<li>使用 <code>file</code> 协议加载静态页面</li>
-</ul>
+<pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myBind <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">var</span> _this <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// 返回一个函数</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">F</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 因为返回了一个函数，我们可以 new F()，所以需要判断</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">F</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">_this</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token operator">...</span>arguments<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> _this<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="如何实现一个-call-函数"><a href="#如何实现一个-call-函数" class="headerlink" title="如何实现一个 call 函数"></a>如何实现一个 call 函数</h3><pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myCall <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> context <span class="token operator">=</span> context <span class="token operator">||</span> window
+  <span class="token comment" spellcheck="true">// 给 context 添加一个属性</span>
+  <span class="token comment" spellcheck="true">// getValue.call(a, 'yck', '24') => a.fn = getValue</span>
+  context<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token comment" spellcheck="true">// 将 context 后面的参数取出来</span>
+  <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// getValue.call(a, 'yck', '24') => a.fn('yck', '24')</span>
+  <span class="token keyword">var</span> result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// 删除 fn</span>
+  <span class="token keyword">delete</span> context<span class="token punctuation">.</span>fn
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span></code></pre>
+<h3 id="如何实现一个-apply-函数"><a href="#如何实现一个-apply-函数" class="headerlink" title="如何实现一个 apply 函数"></a>如何实现一个 apply 函数</h3><pre class=" language-js"><code class="language-js">Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myApply <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> context <span class="token operator">=</span> context <span class="token operator">||</span> window
+  context<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>
+
+  <span class="token keyword">var</span> result
+  <span class="token comment" spellcheck="true">// 需要判断是否存储第二个参数</span>
+  <span class="token comment" spellcheck="true">// 如果存在，就将第二个参数展开</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">delete</span> context<span class="token punctuation">.</span>fn
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -461,7 +505,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/05/tan-hybrid/">http://caoduoya.github.io/2020/03/05/tan-hybrid/</a>
+                    <a href="http://caoduoya.github.io/2020/03/26/bind-call-apply-qu-bie/">http://caoduoya.github.io/2020/03/26/bind-call-apply-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -499,8 +543,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%8F/">
-                                    <span class="chip bg-color">混合式</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
                         </div>
@@ -666,49 +710,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/06/http-xiang-guan-zhi-shi/">
+                <a href="/2020/03/26/bind-call-apply-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="http相关知识">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="bind,call,apply区别">
                         
-                        <span class="card-title">http相关知识</span>
+                        <span class="card-title">bind,call,apply区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            HTTP相关知识1. HTTP有什么特点
-简单快速：客户向服务器请求服务时，只需传送请求方法和路径
-灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由 Content-Type 加以标记
-无连接：无连接的含义是限制每次连接只处理一个
+                            bind、call、apply 区别
+call 和 apply 都是为了解决改变 this 的指向。作用都是相同的，只是传参的方式不同。
+除了第一个参数外，call 可以接收一个参数列表，apply 只接受一个参数数组
+
+let a = {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/http/" class="post-category">
-                                    http
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">网络</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
@@ -722,34 +769,37 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/04/qian-duan-xing-neng-you-hua/">
+                <a href="/2020/03/25/ru-he-tong-guo-js-pan-duan-yi-ge-shu-zu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="前端性能优化">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="如何通过JS判断一个数组">
                         
-                        <span class="card-title">前端性能优化</span>
+                        <span class="card-title">如何通过JS判断一个数组</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前端性能详谈自己去将关于性能的优化的一些知识进行了整理，方便自己去学习和大家阅读
-1 DNS 预解析&lt;link rel="dns-prefetch" href="//blog.poetries.top">
-2 缓存
-缓存对于前端性能优
+                            如何通过JS判断一个数组  instanceof方法
+
+instanceof 运算符是用来测试一个对象是否在其原型链原型构造函数的属性
+
+var arr = [];
+arr instanceof Array; // true
+  const
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category">
-                                    性能优化
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
@@ -759,8 +809,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
-                        <span class="chip bg-color">性能优化</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
