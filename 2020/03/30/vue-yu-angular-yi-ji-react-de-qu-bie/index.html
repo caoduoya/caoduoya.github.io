@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git的使用, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="Vue与Angular以及React的区别？, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>git的使用 | 曹豆芽</title>
+    <title>Vue与Angular以及React的区别？ | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git的使用</h1>
+                    <h1 class="description center-align post-title">Vue与Angular以及React的区别？</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/vue/">
+                                <span class="chip bg-color">vue</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/git/" class="post-category">
-                                git
+                            <a href="/categories/vue/" class="post-category">
+                                vue
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-01
+                    2020-03-30
                 </div>
                 
 
@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    203
+                    349
                 </div>
                 
 
@@ -416,16 +416,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h1><h2 id="1-本地拉取远程仓库代码"><a href="#1-本地拉取远程仓库代码" class="headerlink" title="1.本地拉取远程仓库代码"></a>1.本地拉取远程仓库代码</h2><p>1.本地新建一个文件夹</p>
-<p>2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)</p>
-<pre><code>git init</code></pre><p>3.将gitee(码云)中的项目地址复制过来</p>
-<pre><code>git clone &quot;仓库地址&quot;</code></pre><p>4.执行完之后，就会发现代码已经下载到了我们的新建文件夹中</p>
-<h2 id="2-本地连接已经创建好的仓库"><a href="#2-本地连接已经创建好的仓库" class="headerlink" title="2.本地连接已经创建好的仓库"></a>2.本地连接已经创建好的仓库</h2><p>1.步骤接拉取代码步骤之后</p>
-<p>2.把文件添加到本地版本库</p>
-<pre><code>git add 文件名</code></pre><p>3.将修改提交到仓库</p>
-<pre><code>git commit -m &quot;注释&quot;</code></pre><p>4.关联一个远程仓库</p>
-<pre><code>git remote add origin &quot;仓库地址&quot;</code></pre><p>5.最新修改推送到远程仓库</p>
-<pre><code>git push -u origin &quot;分支名&quot;</code></pre>
+                <h2 id="Vue与Angular以及React的区别？"><a href="#Vue与Angular以及React的区别？" class="headerlink" title="Vue与Angular以及React的区别？"></a>Vue与Angular以及React的区别？</h2><p><strong>1.与AngularJS的区别</strong><br>相同点：<br>都支持指令：内置指令和自定义指令；都支持过滤器：内置过滤器和自定义过滤器；都支持双向数据绑定；都不支持低端浏览器。</p>
+<p>不同点：<br>AngularJS的学习成本高，比如增加了Dependency Injection特性，而Vue.js本身提供的API都比较简单、直观；在性能上，AngularJS依赖对数据做脏检查，所以Watcher越多越慢；Vue.js使用基于依赖追踪的观察并且使用异步队列更新，所有的数据都是独立触发的。</p>
+<p><strong>2.与React的区别</strong><br>相同点：<br>React采用特殊的JSX语法，Vue.js在组件开发中也推崇编写.vue特殊文件格式，对文件内容都有一些约定，两者都需要编译后使用；中心思想相同：一切都是组件，组件实例之间可以嵌套；都提供合理的钩子函数，可以让开发者定制化地去处理需求；都不内置列数AJAX，Route等功能到核心包，而是以插件的方式加载；在组件开发中都支持mixins的特性。<br>不同点：<br>React采用的Virtual DOM会对渲染出来的结果做脏检查；Vue.js在模板中提供了指令，过滤器等，可以非常方便，快捷地操作Virtual DOM。</p>
+
             </div>
             <hr/>
 
@@ -450,7 +444,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/01/git-de-shi-yong/">http://caoduoya.github.io/2020/03/01/git-de-shi-yong/</a>
+                    <a href="http://caoduoya.github.io/2020/03/30/vue-yu-angular-yi-ji-react-de-qu-bie/">http://caoduoya.github.io/2020/03/30/vue-yu-angular-yi-ji-react-de-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,8 +482,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/vue/">
+                                    <span class="chip bg-color">vue</span>
                                 </a>
                             
                         </div>
@@ -655,34 +649,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/01/vue-de-lu-you-shou-wei/">
+                <a href="/2020/03/30/vue-yu-angular-yi-ji-react-de-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="vue的路由守卫">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Vue与Angular以及React的区别？">
                         
-                        <span class="card-title">vue的路由守卫</span>
+                        <span class="card-title">Vue与Angular以及React的区别？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vue的路由守卫vue路由守卫实现代码
-router.beforeEach((to,from,next)=&gt;{
-  if(to.path == &#39;/login&#39;){
-    next();
-  }else{
-    a
+                            Vue与Angular以及React的区别？1.与AngularJS的区别相同点：都支持指令：内置指令和自定义指令；都支持过滤器：内置过滤器和自定义过滤器；都支持双向数据绑定；都不支持低端浏览器。
+不同点：AngularJS的学习成本高，比
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -695,6 +686,7 @@ router.beforeEach((to,from,next)=&gt;{
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -710,49 +702,49 @@ router.beforeEach((to,from,next)=&gt;{
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/git-de-shi-yong/">
+                <a href="/2020/03/26/bind-call-apply-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="git的使用">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="bind,call,apply区别">
                         
-                        <span class="card-title">git的使用</span>
+                        <span class="card-title">bind,call,apply区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            git的使用1.本地拉取远程仓库代码1.本地新建一个文件夹
-2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)
-git init3.将gitee(码云)中的项目地址复制过来
-git clone &quot;仓库地址&
+                            bind、call、apply 区别
+call 和 apply 都是为了解决改变 this 的指向。作用都是相同的，只是传参的方式不同。
+除了第一个参数外，call 可以接收一个参数列表，apply 只接受一个参数数组
+
+let a = {
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category">
-                                    git
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
