@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vue中如何监控某个属性值的变化?</title>
+      <link href="/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/"/>
+      <url>/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Vue中如何监控某个属性值的变化？"><a href="#Vue中如何监控某个属性值的变化？" class="headerlink" title="Vue中如何监控某个属性值的变化？"></a>Vue中如何监控某个属性值的变化？</h3><p>比如现在需要监控data中，<strong>obj.a</strong> 的变化。Vue中监控对象属性的变化你可以这样：</p><pre><code>watch: {      obj: {      handler (newValue, oldValue) {        console.log(&#39;obj changed&#39;)      },      deep: true    }  }</code></pre><p>deep属性表示深层遍历，但是这么写会监控obj的所有属性变化，并不是我们想要的效果，所以做点修改：</p><pre><code>watch: {   &#39;obj.a&#39;: {      handler (newName, oldName) {        console.log(&#39;obj.a changed&#39;)      }   }  }</code></pre><p>还有一种方法，可以通过computed 来实现，只需要：</p><pre><code>computed: {    a1 () {      return this.obj.a    }}</code></pre><p>利用计算属性的特性来实现，当依赖改变时，便会重新计算一个新值。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue与Angular以及React的区别？</title>
       <link href="/2020/03/30/vue-yu-angular-yi-ji-react-de-qu-bie/"/>
       <url>/2020/03/30/vue-yu-angular-yi-ji-react-de-qu-bie/</url>

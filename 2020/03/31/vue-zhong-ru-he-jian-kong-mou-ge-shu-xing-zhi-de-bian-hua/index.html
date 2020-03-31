@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="http相关知识, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="Vue中如何监控某个属性值的变化?, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>http相关知识 | 曹豆芽</title>
+    <title>Vue中如何监控某个属性值的变化? | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">http相关知识</h1>
+                    <h1 class="description center-align post-title">Vue中如何监控某个属性值的变化?</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BD%91%E7%BB%9C/">
-                                <span class="chip bg-color">网络</span>
+                            <a href="/tags/vue/">
+                                <span class="chip bg-color">vue</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/http/" class="post-category">
-                                http
+                            <a href="/categories/vue/" class="post-category">
+                                vue
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-06
+                    2020-03-31
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    704
+                    165
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -416,41 +416,27 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="HTTP相关知识"><a href="#HTTP相关知识" class="headerlink" title="HTTP相关知识"></a>HTTP相关知识</h2><h3 id="1-HTTP有什么特点"><a href="#1-HTTP有什么特点" class="headerlink" title="1. HTTP有什么特点"></a>1. HTTP有什么特点</h3><ul>
-<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径</li>
-<li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由 <code>Content-Type</code> 加以标记</li>
-<li>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接 (深入-持久连接、管线化)</li>
-<li>无状态：HTTP协议是无状态协议( <code>Cookie</code> 的出现)</li>
-</ul>
-<h3 id="2-http和https协议有什么区别"><a href="#2-http和https协议有什么区别" class="headerlink" title="2. http和https协议有什么区别"></a>2. http和https协议有什么区别</h3><blockquote>
-<p>http: 是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（Tcp），用于从www服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少</p>
-<p>https: 是以安全为目标的HTTP通道，简单讲是 <code>HTTP</code> 的安全版，即 <code>HTTP</code> 下加入 <code>SSL</code> 层，<code>HTTPS</code> 的安全基础是 <code>SSL</code> ，因此加密的详细内容就需要 <code>SSL</code></p>
-</blockquote>
-<ul>
-<li><code>http</code> 是超文本传输协议，信息是明文传输，<code>https</code> 则是具有安全性的 <code>ssl</code> 加密传输协议</li>
-<li><code>http</code> 和 <code>https</code> 使用的是完全不同的连接方式，用的端口也不一样，前者是 <code>80</code> ，后者是 <code>443</code></li>
-<li><code>http</code> 的连接很简单，是无状态的；<code>HTTPS</code> 协议是由 <code>SSL+HTTP</code> 协议构建的可进行加密传输、身份认证的网络协议，比 <code>http</code> 协议安全</li>
-</ul>
-<h3 id="3-http状态码有那些？分别代表是什么意思"><a href="#3-http状态码有那些？分别代表是什么意思" class="headerlink" title="3. http状态码有那些？分别代表是什么意思"></a>3. http状态码有那些？分别代表是什么意思</h3><p>常用 <code>http</code> 状态码：</p>
-<ul>
-<li><code>200</code> <code>OK</code> 服务器成功处理了请求</li>
-<li><code>301/302</code> <code>Moved Permanently</code>（重定向）请求的URL已移走</li>
-<li><code>404</code> <code>Not Found</code> (页面丢失)未找到资源</li>
-<li><code>403</code> 服务器拒绝请求</li>
-<li><code>408</code> （请求超时） 服务器等候请求时发生超时</li>
-<li><code>501</code> <code>Internal Server Error</code> 服务器遇到一个错误，使其无法对请求提供服务</li>
-<li><code>502</code> （错误网关） 服务器作为网关或代理，从上游服务器收到无效响应</li>
-<li><code>504</code> （网关超时） 服务器作为网关或代理，但是没有及时从上游服务器收到请求</li>
-</ul>
-<h3 id="4-Http报文"><a href="#4-Http报文" class="headerlink" title="4.Http报文"></a>4.Http报文</h3><p><code>HTTP</code> 报文是面向文本的，报文中的每一个字段都是一些 <code>ASCII</code> 码串，各个字段的长度是不确定的。<code>HTTP</code> 有两类报文：<strong>请求报文和响应报文</strong></p>
-<p>HTTP的这两种报文都由三部分组成：开始行、首部行、实体主体</p>
-<h3 id="5-为什么利用多个域名来存储网站资源会更有效"><a href="#5-为什么利用多个域名来存储网站资源会更有效" class="headerlink" title="5.为什么利用多个域名来存储网站资源会更有效"></a>5.为什么利用多个域名来存储网站资源会更有效</h3><ul>
-<li><code>CDN</code> 缓存更方便</li>
-<li>突破浏览器并发限制</li>
-<li>节约 <code>cookie</code> 带宽</li>
-<li>节约主域名的连接数，优化页面响应速度</li>
-<li>防止不必要的安全问题</li>
-</ul>
+                <h3 id="Vue中如何监控某个属性值的变化？"><a href="#Vue中如何监控某个属性值的变化？" class="headerlink" title="Vue中如何监控某个属性值的变化？"></a>Vue中如何监控某个属性值的变化？</h3><p>比如现在需要监控data中，<strong>obj.a</strong> 的变化。Vue中监控对象属性的变化你可以这样：</p>
+<pre><code>watch: {
+      obj: {
+      handler (newValue, oldValue) {
+        console.log(&#39;obj changed&#39;)
+      },
+      deep: true
+    }
+  }</code></pre><p>deep属性表示深层遍历，但是这么写会监控obj的所有属性变化，并不是我们想要的效果，所以做点修改：</p>
+<pre><code>watch: {
+   &#39;obj.a&#39;: {
+      handler (newName, oldName) {
+        console.log(&#39;obj.a changed&#39;)
+      }
+   }
+  }</code></pre><p>还有一种方法，可以通过computed 来实现，只需要：</p>
+<pre><code>computed: {
+    a1 () {
+      return this.obj.a
+    }
+}</code></pre><p>利用计算属性的特性来实现，当依赖改变时，便会重新计算一个新值。</p>
 
             </div>
             <hr/>
@@ -476,7 +462,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/06/http-xiang-guan-zhi-shi/">http://caoduoya.github.io/2020/03/06/http-xiang-guan-zhi-shi/</a>
+                    <a href="http://caoduoya.github.io/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/">http://caoduoya.github.io/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -514,8 +500,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BD%91%E7%BB%9C/">
-                                    <span class="chip bg-color">网络</span>
+                                <a href="/tags/vue/">
+                                    <span class="chip bg-color">vue</span>
                                 </a>
                             
                         </div>
@@ -681,50 +667,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/07/xuan-ran-you-hua-xiang-tan/">
+                <a href="/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="渲染优化详谈">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Vue中如何监控某个属性值的变化?">
                         
-                        <span class="card-title">渲染优化详谈</span>
+                        <span class="card-title">Vue中如何监控某个属性值的变化?</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            渲染优化详谈
-禁止使用iframe（阻塞父文档onload事件）
-iframe会阻塞主页面的Onload事件
-搜索引擎的检索程序无法解读这种页面，不利于SEO
-iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并
+                            Vue中如何监控某个属性值的变化？比如现在需要监控data中，obj.a 的变化。Vue中监控对象属性的变化你可以这样：
+watch: {
+      obj: {
+      handler (newValue, oldValue) {
+
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B8%B2%E6%9F%93/" class="post-category">
-                                    渲染
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">前端</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
@@ -738,34 +726,32 @@ iframe和主页面共享连接池，而浏览器对相同域的连接有限制�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/05/tan-hybrid/">
+                <a href="/2020/03/30/vue-yu-angular-yi-ji-react-de-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="谈hybrid">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Vue与Angular以及React的区别？">
                         
-                        <span class="card-title">谈hybrid</span>
+                        <span class="card-title">Vue与Angular以及React的区别？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            谈hybridhybrid为”混合”,是前端和客户端的混合开发,需要前端开发人员和客户端开发人员配合完成,在某个环节也会涉及到server端
-hybrid和h5的区别相比优点
-1.体验更好，和NA体验基本上是一致的
-2.看快速迭代，不需要a
+                            Vue与Angular以及React的区别？1.与AngularJS的区别相同点：都支持指令：内置指令和自定义指令；都支持过滤器：内置过滤器和自定义过滤器；都支持双向数据绑定；都不支持低端浏览器。
+不同点：AngularJS的学习成本高，比
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/app/" class="post-category">
-                                    app
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
                                 </a>
                             
                             
@@ -775,8 +761,8 @@ hybrid和h5的区别相比优点
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B7%E5%90%88%E5%BC%8F/">
-                        <span class="chip bg-color">混合式</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
