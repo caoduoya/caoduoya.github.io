@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vue3.0与vue2.x不同，你可以知道</title>
+      <link href="/2020/04/05/vue3-0-yu-vue2-x-bu-tong-ni-ke-yi-zhi-dao/"/>
+      <url>/2020/04/05/vue3-0-yu-vue2-x-bu-tong-ni-ke-yi-zhi-dao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue3-0与vue2-x不同，你可以知道"><a href="#vue3-0与vue2-x不同，你可以知道" class="headerlink" title="vue3.0与vue2.x不同，你可以知道"></a>vue3.0与vue2.x不同，你可以知道</h1><p>小编最近在用vue3.0去写项目，也总结了一些关于vue2.x和vue3.0的一些区别</p><p>vue3.0对vue的主要3个特点：<strong>响应式、模板、对象式的组件声明方式</strong>，进行了全面的更改，底层的实现和上层的api都有了明显的变化，基于Proxy重新实现了响应式，基于treeshaking内置了更多功能，提供了类式的组件声明方式。</p><h2 id="在vue2-x如何去使用vue3-0的语法"><a href="#在vue2-x如何去使用vue3-0的语法" class="headerlink" title="在vue2.x如何去使用vue3.0的语法"></a>在vue2.x如何去使用vue3.0的语法</h2><p>安装依赖Composition API</p><pre><code>npm install @vue/composition-api --save</code></pre><p>在main.js使用</p><pre><code>import VueCompositionApi from &#39;@vue/composition-api&#39;; Vue.use(VueCompositionApi);</code></pre><h2 id="VUE3-0新特性语法"><a href="#VUE3-0新特性语法" class="headerlink" title="VUE3.0新特性语法"></a>VUE3.0新特性语法</h2><h3 id="setup函数"><a href="#setup函数" class="headerlink" title="setup函数"></a>setup函数</h3><p>setup函数是一个新的Vue组件选项，是用于在组件中使用Composition API的入口。</p><pre><code>export default {  setup(props, context) {​    context.attrs​    context.slots   context.parent   context.root   context.emit   context.refs  }}</code></pre><h3 id="Reactive（声明单一对象时使用）"><a href="#Reactive（声明单一对象时使用）" class="headerlink" title="Reactive（声明单一对象时使用）"></a>Reactive（声明单一对象时使用）</h3><p>取得一个对象并返回原始对象的响应数据处理。</p><p>const obj = reactive({ count: 1 })</p><h3 id="ref（声明基础数据类型变量时使用）"><a href="#ref（声明基础数据类型变量时使用）" class="headerlink" title="ref（声明基础数据类型变量时使用）"></a>ref（声明基础数据类型变量时使用）</h3><p>内部值并返回一个响应性且可变的ref对象。ref对象具有.value指向内部值的单个属性。</p><p>const number = ref(0);</p><p>获取值方式：number.value</p><h3 id="isRef-和-toRefs"><a href="#isRef-和-toRefs" class="headerlink" title="isRef 和 toRefs"></a><strong>isRef</strong> <strong>和</strong> toRefs</h3><p>检查一个对象是否是ref对象：</p><pre><code>const unwrapped = isRef(foo) ? foo.value : foo;function useMousePosition() {  const pos = reactive({​    x: 0,​    y: 0  });  return toRefs(pos);}const { x, y } = useMousePosition();</code></pre><p>toRefs将reactive对象转换为普通对象，保证对象解构或拓展运算符不会丢失原有响应式对象的响应.</p><h3 id="watch-侦听器"><a href="#watch-侦听器" class="headerlink" title="watch 侦听器"></a><strong>watch</strong> 侦听器</h3><pre><code>const count = ref(100);watch(()=&gt;count.vlaue,()=&gt;{  console.log(&#39;count数值发生变化了&#39;)})count.value = 200; // count重新赋值，watch则被执行</code></pre><h3 id="mputed"><a href="#mputed" class="headerlink" title="mputed"></a>mputed</h3><p>可传入get和set，用于定义可更改的计算属性</p><pre><code>const count = ref(1);const plusOne = computed({  get: () =&gt; count.value + 1,  set: val =&gt; { count.value = val - 1 }}); plusOne.value = 1;console.log(count.value); // 0</code></pre><h3 id="2-x生命周期选项和Composition-API之间的映射"><a href="#2-x生命周期选项和Composition-API之间的映射" class="headerlink" title="2.x生命周期选项和Composition API之间的映射"></a>2.x生命周期选项和Composition API之间的映射</h3><pre><code>beforeCreate -&gt;使用 setup()created -&gt;使用 setup()beforeMount - &gt; onBeforeMountmounted - &gt; onMountedmethods -&gt; 去除，普通方式写方法beforeUpdate - &gt; onBeforeUpdateupdated - &gt; onUpdatedbeforeDestroy - &gt; onBeforeUnmountdestroyed - &gt; onUnmountederrorCaptured - &gt; onErrorCaptured</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue中如何监控某个属性值的变化?</title>
       <link href="/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/"/>
       <url>/2020/03/31/vue-zhong-ru-he-jian-kong-mou-ge-shu-xing-zhi-de-bian-hua/</url>
