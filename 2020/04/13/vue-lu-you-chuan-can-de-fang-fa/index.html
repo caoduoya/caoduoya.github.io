@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue的路由守卫, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="vue路由传参的方法, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>vue的路由守卫 | 曹豆芽</title>
+    <title>vue路由传参的方法 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue的路由守卫</h1>
+                    <h1 class="description center-align post-title">vue路由传参的方法</h1>
                 </div>
             </div>
         </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-01
+                    2020-04-13
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    97
+                    614
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -416,18 +416,73 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="vue的路由守卫"><a href="#vue的路由守卫" class="headerlink" title="vue的路由守卫"></a>vue的路由守卫</h1><p>vue路由守卫实现代码</p>
-<pre><code>router.beforeEach((to,from,next)=&gt;{
-  if(to.path == &#39;/login&#39;){
-    next();
-  }else{
-    alert(&#39;您还没有登录，请先登录&#39;);
-    next(&#39;/login&#39;);
-  }
-})</code></pre><h3 id="各参数含义"><a href="#各参数含义" class="headerlink" title="各参数含义"></a>各参数含义</h3><p>1.to 表示将要跳转到的组件</p>
-<p>2.from原组件</p>
-<p>3.next()进入到下一个组件的钩子函数</p>
-<p>4.next(/login)进入指定的组件的钩子函数</p>
+                <h1 id="vue路由传参的方法"><a href="#vue路由传参的方法" class="headerlink" title="vue路由传参的方法"></a>vue路由传参的方法</h1><p>最近小编在公司也是在做vue项目，所以在有些功能需求上需要vue路由传参，所以写了这边博文，对于vue路由传参的方法做了小总结。</p>
+<h3 id="第一种：使用router的name属性也就是params来传递参数"><a href="#第一种：使用router的name属性也就是params来传递参数" class="headerlink" title="第一种：使用router的name属性也就是params来传递参数"></a>第一种：使用router的name属性也就是params来传递参数</h3><p>这个方法有一个bug就是当你传参过去的时候，再次刷新页面时参数就会丢失。解决方法下边会说到。</p>
+<h6 id="1：首先需要在router-index-js里边配置每个页面的路径，name属性，看例子："><a href="#1：首先需要在router-index-js里边配置每个页面的路径，name属性，看例子：" class="headerlink" title="1：首先需要在router/index.js里边配置每个页面的路径，name属性，看例子："></a>1：首先需要在router/index.js里边配置每个页面的路径，name属性，看例子：</h6><pre class=" language-dart"><code class="language-dart"><span class="token keyword">import</span> Vue from <span class="token string">'vue'</span>
+<span class="token keyword">import</span> Router from <span class="token string">'vue-router'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> constantRouterMap <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        path<span class="token punctuation">:</span> <span class="token string">'/login/:userId/:id'</span><span class="token punctuation">,</span>
+        name<span class="token punctuation">:</span><span class="token string">'Message'</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//就是要在路由配置里边配置这个属性，用来知道你要跳转到那个页面的名字</span>
+    <span class="token comment" spellcheck="true">/***
+     * 如果想做到页面刷新，参数不丢失，就必须在path后面加上这个参数
+     * 但是这样做的话就会导致参数显示在url的后面，（在这一点上）跟query没什么区别了。
+    *  多个参数也可以一直往后边追加
+     */</span>
+        component<span class="token punctuation">:</span> <span class="token function">_import</span><span class="token punctuation">(</span><span class="token string">'login/index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        hidden<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        path<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+        component<span class="token punctuation">:</span> Layout<span class="token punctuation">,</span>
+        redirect<span class="token punctuation">:</span> <span class="token string">'dashboard'</span><span class="token punctuation">,</span>
+        icon<span class="token punctuation">:</span> <span class="token string">'dashboard'</span><span class="token punctuation">,</span>
+        hidden<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        noDropDown<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        children<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            path<span class="token punctuation">:</span> <span class="token string">'dashboard'</span><span class="token punctuation">,</span>
+            name<span class="token punctuation">:</span> <span class="token string">'首页'</span><span class="token punctuation">,</span>
+            component<span class="token punctuation">:</span> <span class="token function">_import</span><span class="token punctuation">(</span><span class="token string">'main/index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            meta<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                title<span class="token punctuation">:</span> <span class="token string">'dashboard'</span><span class="token punctuation">,</span>
+                icon<span class="token punctuation">:</span> <span class="token string">'dashboard'</span><span class="token punctuation">,</span>
+                noCache<span class="token punctuation">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    routes<span class="token punctuation">:</span> constantRouterMap
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h6 id="2：在传值页面的写法："><a href="#2：在传值页面的写法：" class="headerlink" title="2：在传值页面的写法："></a>2：在传值页面的写法：</h6><pre class=" language-csharp"><code class="language-csharp"><span class="token comment" spellcheck="true">//用这种方法传参，必须这么些，不能写path,否则你在取参数的时候this.$router.params.userId就是undefined.这是因为，params只能用name来引入路由，</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span><span class="token string">"'Message'"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//这个name就是你刚刚配置在router里边的name</span>
+    <span class="token keyword">params</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+          userId<span class="token punctuation">:</span><span class="token string">"10011"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h6 id="step-3-在取值页面的写法："><a href="#step-3-在取值页面的写法：" class="headerlink" title="step:3,在取值页面的写法："></a>step:3,在取值页面的写法：</h6><pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span><span class="token keyword">params</span><span class="token punctuation">.</span>userId</code></pre>
+<h3 id="第二种：使用query来传递参数"><a href="#第二种：使用query来传递参数" class="headerlink" title="第二种：使用query来传递参数"></a>第二种：使用query来传递参数</h3><h6 id="1：在传值页面的写法："><a href="#1：在传值页面的写法：" class="headerlink" title="1：在传值页面的写法："></a>1：在传值页面的写法：</h6><pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    path<span class="token operator">:</span><span class="token string">"/login"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//这个path就是你在router/index.js里边配置的路径</span>
+    query<span class="token operator">:</span><span class="token punctuation">{</span>
+          userId<span class="token operator">:</span><span class="token string">"10011"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h6 id="2：在传值页面的写法：-1"><a href="#2：在传值页面的写法：-1" class="headerlink" title="2：在传值页面的写法："></a>2：在传值页面的写法：</h6><pre class=" language-kotlin"><code class="language-kotlin">第一种：
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span>currentRoute<span class="token punctuation">.</span>query<span class="token punctuation">.</span>userId
+第二种：
+<span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>userId</code></pre>
+<h3 id="三：使用vue里的标签来传递参数"><a href="#三：使用vue里的标签来传递参数" class="headerlink" title="三：使用vue里的标签来传递参数"></a>三：使用vue里的<router-link>标签来传递参数</h3><h6 id="1：在传值页面的写法：-1"><a href="#1：在传值页面的写法：-1" class="headerlink" title="1：在传值页面的写法："></a>1：在传值页面的写法：</h6><pre class=" language-jsx"><code class="language-jsx">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span>
+                             <span class="token attr-name">:to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{path:<span class="token punctuation">'</span>/login<span class="token punctuation">'</span>,query:{userId:</span> <span class="token attr-name">"33333"}}"</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">></span></span></code></pre>
+<h6 id="2：在取值页面的写法：同第二种。"><a href="#2：在取值页面的写法：同第二种。" class="headerlink" title="2：在取值页面的写法：同第二种。"></a>2：在取值页面的写法：同第二种。</h6><p>其实，router-link也可以使用name的方法传参</p>
+<pre class=" language-csharp"><code class="language-csharp">同样，这种方法也需要在router<span class="token operator">/</span>index<span class="token punctuation">.</span>js里边配置每个页面的路径，name属性
+name<span class="token punctuation">:</span><span class="token string">'Message'</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//就是要在路由配置里边配置这个属性，用来知道你要跳转到那个页面的名字</span>
+<span class="token operator">&lt;</span>router<span class="token operator">-</span>link <span class="token punctuation">:</span>to<span class="token operator">=</span><span class="token string">"{name:''Message'',params:{userId:'1234'}}"</span><span class="token operator">></span>Hi页面<span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>router<span class="token operator">-</span>link<span class="token operator">></span></code></pre>
+<p>取参方法：</p>
+<pre class=" language-csharp"><code class="language-csharp"><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span><span class="token keyword">params</span><span class="token punctuation">.</span>userId</code></pre>
 
             </div>
             <hr/>
@@ -453,7 +508,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/01/vue-de-lu-you-shou-wei/">http://caoduoya.github.io/2020/03/01/vue-de-lu-you-shou-wei/</a>
+                    <a href="http://caoduoya.github.io/2020/04/13/vue-lu-you-chuan-can-de-fang-fa/">http://caoduoya.github.io/2020/04/13/vue-lu-you-chuan-can-de-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -658,29 +713,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/01/liao-jie-kua-yue-wen-ti/">
+                <a href="/2020/04/13/vue-lu-you-chuan-can-de-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="了解跨越问题">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="vue路由传参的方法">
                         
-                        <span class="card-title">了解跨越问题</span>
+                        <span class="card-title">vue路由传参的方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            了解跨域问题?首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSF
+                            vue路由传参的方法最近小编在公司也是在做vue项目，所以在有些功能需求上需要vue路由传参，所以写了这边博文，对于vue路由传参的方法做了小总结。
+第一种：使用router的name属性也就是params来传递参数这个方法有一个bug就是
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -693,6 +750,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -711,34 +769,32 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/git-de-shi-yong/">
+                <a href="/2020/04/05/vue3-0-yu-vue2-x-bu-tong-ni-ke-yi-zhi-dao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="git的使用">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="vue3.0与vue2.x不同，你可以知道">
                         
-                        <span class="card-title">git的使用</span>
+                        <span class="card-title">vue3.0与vue2.x不同，你可以知道</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            git的使用1.本地拉取远程仓库代码1.本地新建一个文件夹
-2.初始化本地Git仓库(把本地文件夹初始化为一个Git可以管理的版本库)
-git init3.将gitee(码云)中的项目地址复制过来
-git clone &quot;仓库地址&
+                            vue3.0与vue2.x不同，你可以知道小编最近在用vue3.0去写项目，也总结了一些关于vue2.x和vue3.0的一些区别
+vue3.0对vue的主要3个特点：响应式、模板、对象式的组件声明方式，进行了全面的更改，底层的实现和上层的a
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category">
-                                    git
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
                                 </a>
                             
                             
@@ -748,8 +804,8 @@ git clone &quot;仓库地址&
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
