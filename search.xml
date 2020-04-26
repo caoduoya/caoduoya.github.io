@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>node连接mysql数据库实现登录接口</title>
+      <link href="/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/"/>
+      <url>/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/</url>
+      
+        <content type="html"><![CDATA[<p>﻿# node连接mysql数据库实现登录接口</p><h2 id="创建node项目"><a href="#创建node项目" class="headerlink" title="创建node项目"></a>创建node项目</h2><h3 id="在小窗口使用npm创建-生成package-json文件"><a href="#在小窗口使用npm创建-生成package-json文件" class="headerlink" title="在小窗口使用npm创建,生成package.json文件"></a>在小窗口使用npm创建,生成package.json文件</h3><pre><code>npm init</code></pre><h3 id="项目结构目录"><a href="#项目结构目录" class="headerlink" title="项目结构目录"></a>项目结构目录</h3><p><img src="https://img-blog.csdnimg.cn/20200426151655204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMTA4OTcy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h3 id="创建db-js链接mysql数据库"><a href="#创建db-js链接mysql数据库" class="headerlink" title="创建db.js链接mysql数据库"></a>创建db.js链接mysql数据库</h3><pre><code>const mysql = require(&#39;mysql&#39;);exports.base = (sql, data, callback) =&gt; {    const connection = mysql.createConnection({        host: &#39;localhost&#39;,        user: &#39;root&#39;,        password: &#39;root&#39;,        database: &#39;test&#39;     });    connection.connect();    connection.query(sql, data, function(error, results, fields) {        if (error) throw error;        callback(results);        console.log(&#39;数据库连接成功&#39;);    })    connection.end();}</code></pre><p>app.js</p><pre><code>// 创建express服务器const express = require(&#39;express&#39;)const app = express()// 注册解析 表单数据的 body-parserconst bodyParser = require(&#39;body-parser&#39;)// 将请求响应设置content-type设置为application/jsonconst router = require(&#39;./routes/users.js&#39;)app.use(&#39;/api/*&#39;, function(req, res, next) {    // 设置请求头为允许跨域    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);    // 设置服务器支持的所有头信息字段    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type,Content-Length, Authorization, Accept,X-Requested-With&quot;);    // 设置服务器支持的所有跨域请求的方法    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;POST,GET&quot;);    // next()方法表示进入下一个路由    next();});// postapp.use(bodyParser.urlencoded({    extended: false}))// 处理json格式的参数app.use(bodyParser.json())// 配置路由app.use(router)//设置cookies// 服务器已经启动app.listen(&#39;3003&#39;, function() {    console.log(&#39;running...&#39;)})</code></pre><p>users.js 链接接口</p><pre><code>const express = require(&#39;express&#39;)const router = express.Router()const services = require(&#39;../services/userService.js&#39;)// 登录功能router.post(&#39;/api/login&#39;, services.login)//注册功能router.post(&#39;/api/register&#39;, services.register)module.exports = router</code></pre><p>userService.js 对于接口进行处理</p><pre><code>const db = require(&#39;../sql/db.js&#39;);const jwt = require(&#39;../token.js&#39;);exports.login = (req, res) =&gt; {    let {        username,        password    } = req.body;    // 查询语句    let sql = &#39;select * from user where username = ?&#39;    db.base(sql, username, (result) =&gt; {        if (!result.length) {            return res.json({                status: -1,                msg: &#39;登录失败&#39;            })        } else {            if (result[0].password == password) {                let token = jwt.creatToken({                    login: true,                    username: username                });                return res.json({                    status: 1,                    msg: &#39;登录成功&#39;,                    token: token                })            }            return res.json({                status: -2,                msg: &#39;密码错误&#39;            })        }    })}exports.register = (req, res) =&gt; {    let {        username,        password,        token    } = req.body;    console.log(req.body);}</code></pre><p>运行app.js,项目运行成功，测试接口</p><pre><code>node app.js</code></pre><p><img src="https://img-blog.csdnimg.cn/20200426151804220.png" alt="在这里插入图片描述"></p><pre><code>} = req.body;console.log(req.body);</code></pre><p>}</p><pre><code>运行app.js,项目运行成功，测试接口</code></pre><p>node app.js</p><pre><code>![在这里插入图片描述](https://img-blog.csdnimg.cn/20200426151640589.png)到此一个node的登录接口就实现，需求什么样的接口，可以去扩展。</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> node </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> node </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue从零到运行项目的完整搭建步骤</title>
       <link href="/2020/04/18/vue-cong-ling-dao-yun-xing-xiang-mu-de-wan-zheng-da-jian-bu-zou/"/>
       <url>/2020/04/18/vue-cong-ling-dao-yun-xing-xiang-mu-de-wan-zheng-da-jian-bu-zou/</url>

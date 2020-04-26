@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="javascript创建对象方式, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="node连接mysql数据库实现登录接口, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>javascript创建对象方式 | 曹豆芽</title>
+    <title>node连接mysql数据库实现登录接口 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">javascript创建对象方式</h1>
+                    <h1 class="description center-align post-title">node连接mysql数据库实现登录接口</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/js/">
-                                <span class="chip bg-color">js</span>
+                            <a href="/tags/node/">
+                                <span class="chip bg-color">node</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/js/" class="post-category">
-                                js
+                            <a href="/categories/node/" class="post-category">
+                                node
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-08
+                    2020-04-26
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    348
+                    572
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -416,69 +416,121 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="javascript创建对象方式"><a href="#javascript创建对象方式" class="headerlink" title="javascript创建对象方式"></a>javascript创建对象方式</h3><p><code>javascript</code>创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用<code>JSON</code>；但写法有很多种，也能混合使用</p>
-<ul>
-<li>对象字面量的方式</li>
-</ul>
-<pre class=" language-javascript"><code class="language-javascript">person<span class="token operator">=</span><span class="token punctuation">{</span>firstname<span class="token punctuation">:</span><span class="token string">"曹豆芽"</span><span class="token punctuation">,</span>lastname<span class="token punctuation">:</span><span class="token string">"曹"</span><span class="token punctuation">,</span>age<span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">,</span>eyecolor<span class="token punctuation">:</span><span class="token string">"blue"</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<ul>
-<li>用<code>function</code>来模拟无参的构造函数</li>
-</ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-    <span class="token keyword">var</span> person<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//定义一个function，如果使用new"实例化",该function可以看作是一个Class</span>
-        person<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"曹豆芽"</span><span class="token punctuation">;</span>
-        person<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token string">"20"</span><span class="token punctuation">;</span>
-        person<span class="token punctuation">.</span>work<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token function">alert</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">" hello..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-person<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<ul>
-<li>用<code>function</code>来模拟参构造函数来实现（用<code>this</code>关键字定义构造的上下文属性）</li>
-</ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Pet</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>hobby<span class="token punctuation">)</span><span class="token punctuation">{</span>
-       <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//this作用域：当前对象</span>
-       <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
-       <span class="token keyword">this</span><span class="token punctuation">.</span>hobby<span class="token operator">=</span>hobby<span class="token punctuation">;</span>
-       <span class="token keyword">this</span><span class="token punctuation">.</span>eat<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-           <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我叫"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">",我喜欢"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>hobby<span class="token operator">+</span><span class="token string">",是个前端工程师"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-       <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> maidou <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Pet</span><span class="token punctuation">(</span><span class="token string">"曹豆芽"</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token string">"coding"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//实例化、创建对象</span>
-maidou<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//调用eat方法</span></code></pre>
-<ul>
-<li>用工厂方式来创建（内置对象）</li>
-</ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> wcDog <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     wcDog<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"阿福"</span><span class="token punctuation">;</span>
-     wcDog<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
-     wcDog<span class="token punctuation">.</span>work<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-       <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我是"</span><span class="token operator">+</span>wcDog<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">",吃东西"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span>
-     wcDog<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<ul>
-<li>用原型方式来创建</li>
-</ul>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-Dog<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"曹豆芽"</span><span class="token punctuation">;</span>
-Dog<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>eat<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"是个憨憨"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> wangcai <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-wangcai<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<ul>
-<li>用混合方式来创建</li>
-</ul>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">function</span> <span class="token function">Car</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>price<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>price<span class="token operator">=</span>price<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-Car<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>sell<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我是"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"，我现在卖"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>price<span class="token operator">+</span><span class="token string">"万元"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> camry <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token string">"曹豆芽"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-camry<span class="token punctuation">.</span><span class="token function">sell</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><a href="https://caoduoya.github.io/">个人博客地址:</a>大家可以看看</p>
+                <p>﻿# node连接mysql数据库实现登录接口</p>
+<h2 id="创建node项目"><a href="#创建node项目" class="headerlink" title="创建node项目"></a>创建node项目</h2><h3 id="在小窗口使用npm创建-生成package-json文件"><a href="#在小窗口使用npm创建-生成package-json文件" class="headerlink" title="在小窗口使用npm创建,生成package.json文件"></a>在小窗口使用npm创建,生成package.json文件</h3><pre><code>npm init</code></pre><h3 id="项目结构目录"><a href="#项目结构目录" class="headerlink" title="项目结构目录"></a>项目结构目录</h3><p><img src="https://img-blog.csdnimg.cn/20200426151655204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMTA4OTcy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="创建db-js链接mysql数据库"><a href="#创建db-js链接mysql数据库" class="headerlink" title="创建db.js链接mysql数据库"></a>创建db.js链接mysql数据库</h3><pre><code>const mysql = require(&#39;mysql&#39;);
 
+exports.base = (sql, data, callback) =&gt; {
+    const connection = mysql.createConnection({
+        host: &#39;localhost&#39;,
+        user: &#39;root&#39;,
+        password: &#39;root&#39;,
+        database: &#39;test&#39; 
+    });
+    connection.connect();
+
+    connection.query(sql, data, function(error, results, fields) {
+        if (error) throw error;
+        callback(results);
+        console.log(&#39;数据库连接成功&#39;);
+    })
+    connection.end();
+}
+</code></pre><p>app.js</p>
+<pre><code>// 创建express服务器
+const express = require(&#39;express&#39;)
+const app = express()
+// 注册解析 表单数据的 body-parser
+const bodyParser = require(&#39;body-parser&#39;)
+// 将请求响应设置content-type设置为application/json
+const router = require(&#39;./routes/users.js&#39;)
+app.use(&#39;/api/*&#39;, function(req, res, next) {
+    // 设置请求头为允许跨域
+    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+    // 设置服务器支持的所有头信息字段
+    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type,Content-Length, Authorization, Accept,X-Requested-With&quot;);
+    // 设置服务器支持的所有跨域请求的方法
+    res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;POST,GET&quot;);
+    // next()方法表示进入下一个路由
+
+    next();
+});
+// post
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
+// 处理json格式的参数
+app.use(bodyParser.json())
+// 配置路由
+app.use(router)
+//设置cookies
+// 服务器已经启动
+app.listen(&#39;3003&#39;, function() {
+    console.log(&#39;running...&#39;)
+})
+</code></pre><p>users.js 链接接口</p>
+<pre><code>const express = require(&#39;express&#39;)
+const router = express.Router()
+const services = require(&#39;../services/userService.js&#39;)
+// 登录功能
+router.post(&#39;/api/login&#39;, services.login)
+//注册功能
+router.post(&#39;/api/register&#39;, services.register)
+module.exports = router
+</code></pre><p>userService.js 对于接口进行处理</p>
+<pre><code>const db = require(&#39;../sql/db.js&#39;);
+const jwt = require(&#39;../token.js&#39;);
+exports.login = (req, res) =&gt; {
+    let {
+        username,
+        password
+    } = req.body;
+    // 查询语句
+    let sql = &#39;select * from user where username = ?&#39;
+    db.base(sql, username, (result) =&gt; {
+        if (!result.length) {
+            return res.json({
+                status: -1,
+                msg: &#39;登录失败&#39;
+            })
+        } else {
+            if (result[0].password == password) {
+                let token = jwt.creatToken({
+                    login: true,
+                    username: username
+                });
+                return res.json({
+                    status: 1,
+                    msg: &#39;登录成功&#39;,
+                    token: token
+                })
+            }
+            return res.json({
+                status: -2,
+                msg: &#39;密码错误&#39;
+            })
+        }
+    })
+}
+exports.register = (req, res) =&gt; {
+    let {
+        username,
+        password,
+        token
+    } = req.body;
+    console.log(req.body);
+}
+</code></pre><p>运行app.js,项目运行成功，测试接口</p>
+<pre><code>node app.js</code></pre><p><img src="https://img-blog.csdnimg.cn/20200426151804220.png" alt="在这里插入图片描述"></p>
+<pre><code>} = req.body;
+console.log(req.body);</code></pre><p>}</p>
+<pre><code>运行app.js,项目运行成功，测试接口
+</code></pre><p>node app.js</p>
+<pre><code>![在这里插入图片描述](https://img-blog.csdnimg.cn/20200426151640589.png)
+
+
+到此一个node的登录接口就实现，需求什么样的接口，可以去扩展。
+</code></pre>
             </div>
             <hr/>
 
@@ -503,7 +555,7 @@ camry<span class="token punctuation">.</span><span class="token function">sell</
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/">http://caoduoya.github.io/2020/03/08/javascript-chuang-jian-dui-xiang-fang-shi/</a>
+                    <a href="http://caoduoya.github.io/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/">http://caoduoya.github.io/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,8 +593,8 @@ camry<span class="token punctuation">.</span><span class="token function">sell</
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/js/">
-                                    <span class="chip bg-color">js</span>
+                                <a href="/tags/node/">
+                                    <span class="chip bg-color">node</span>
                                 </a>
                             
                         </div>
@@ -708,56 +760,50 @@ camry<span class="token punctuation">.</span><span class="token function">sell</
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/09/yi-bu-bian-cheng-de-shi-xian-fang-shi/">
+                <a href="/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="异步编程的实现方式">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="node连接mysql数据库实现登录接口">
                         
-                        <span class="card-title">异步编程的实现方式</span>
+                        <span class="card-title">node连接mysql数据库实现登录接口</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            异步编程的实现方式
-回调函数
-优点：简单、容易理解
-缺点：不利于维护，代码耦合高
-
-
-事件监听(采用时间驱动模式，取决于某个事件是否发生)：
-优点：容易理解，可以绑定多个事件，每个事件可以指定多个回调函数
-缺点：事件驱动型，流程不够清晰
-
-
+                            ﻿# node连接mysql数据库实现登录接口
+创建node项目在小窗口使用npm创建,生成package.json文件npm init项目结构目录
+创建db.js链接mysql数据库const mysql = require(&#39;m
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/js/" class="post-category">
-                                    js
+                            <a href="/categories/node/" class="post-category">
+                                    node
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/js/">
-                        <span class="chip bg-color">js</span>
+                    <a href="/tags/node/">
+                        <span class="chip bg-color">node</span>
                     </a>
                     
                 </div>
@@ -771,35 +817,33 @@ camry<span class="token punctuation">.</span><span class="token function">sell</
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/07/xuan-ran-you-hua-xiang-tan/">
+                <a href="/2020/04/18/vue-cong-ling-dao-yun-xing-xiang-mu-de-wan-zheng-da-jian-bu-zou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="渲染优化详谈">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="vue从零到运行项目的完整搭建步骤">
                         
-                        <span class="card-title">渲染优化详谈</span>
+                        <span class="card-title">vue从零到运行项目的完整搭建步骤</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            渲染优化详谈
-禁止使用iframe（阻塞父文档onload事件）
-iframe会阻塞主页面的Onload事件
-搜索引擎的检索程序无法解读这种页面，不利于SEO
-iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并
+                            ﻿# vue从零到运行项目的完整搭建步骤
+今天小编总结了一下，vue项目从环境的搭建和项目的初始运行，希望可以对一些刚学习vue的小伙伴有一些帮助。
+1.安装环境1.1node环境自己可以根据自己的电脑去选择版本，下载完成，点击安装即可，可
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B8%B2%E6%9F%93/" class="post-category">
-                                    渲染
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
                                 </a>
                             
                             
@@ -809,8 +853,8 @@ iframe和主页面共享连接池，而浏览器对相同域的连接有限制�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">前端</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
