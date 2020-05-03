@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue使用axios, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="es6的基本使用, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>vue使用axios | 曹豆芽</title>
+    <title>es6的基本使用 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -242,7 +242,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue使用axios</h1>
+                    <h1 class="description center-align post-title">es6的基本使用</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vue/">
-                                <span class="chip bg-color">vue</span>
+                            <a href="/tags/es6/">
+                                <span class="chip bg-color">es6</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/vue/" class="post-category">
-                                vue
+                            <a href="/categories/es6/" class="post-category">
+                                es6
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-01
+                    2020-05-03
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    69
+                    752
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -416,34 +416,100 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="vue使用axios"><a href="#vue使用axios" class="headerlink" title="vue使用axios"></a>vue使用axios</h1><p>1.在mina.js中写下面代码</p>
-<pre><code>import Axios from &quot;axios&quot;;
-Vue.prototype.HOST = &quot;http://localhost:4000&quot;;
-Vue.prototype.$axios = Axios;</code></pre><p>2.在页面使用的时候是</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>$axios
+                <h1 id="ES6的一些基本使用"><a href="#ES6的一些基本使用" class="headerlink" title="ES6的一些基本使用"></a>ES6的一些基本使用</h1><h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>var let 都可用于声明变量.</p>
+<p>区别：1、let：只在let命令所在代码块内有效</p>
+<p>​      2、let 不存在变量提升（内部影响不到外部）</p>
+<pre><code>    var b = [];
+    for(var j=0;j&lt;10;j++){
+        let d=j;
+        b[j]=function(){
+            console.log(d);
+        };
+    }
+    b[3]() //3</code></pre><p> 3、let 不允许在相同作用于重复声明</p>
+<p>ES5只有全局作用域和函数作用域</p>
+<p>ES6引入了块级作用域的概念 作用域块和块之间不受影响<br>const 也可以声明变量，但是声明的是常量，一旦声明，常量的值就不能改变。</p>
+<p>其他和let基本一致<br>const 声明对象的属性是可以修改的，因为const保存的是对象的地址。</p>
+<p>跨模块常量</p>
+<pre><code>export 导出
+import 引入几种方式
+import * as XXX from &#39;./xxx&#39;;  //使用方式console.log(XXX.输出的常量)
 
-​    <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>HOST <span class="token operator">+</span> <span class="token string">"/api/login"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+import {} from &#39;./xxx&#39;; //引入变量
 
-​     username<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>username<span class="token punctuation">,</span>
+import xxx from &#39;xxxxx&#39; ; //引入文件</code></pre><p>ES6数组相关 数组解构</p>
+<h2 id="es6之扩展运算符-三个点（…）"><a href="#es6之扩展运算符-三个点（…）" class="headerlink" title="es6之扩展运算符 三个点（…）"></a>es6之扩展运算符 三个点（…）</h2><pre><code>var [a,b,c]=[1,2,3];
 
-​     password<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>password
+console.log(a,b,c)//1,2,3
 
-​    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+let [head,...tail]=[1,2,3,4,5,6,7,8,9];
 
-​    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token operator">*</span>result<span class="token operator">*</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+console.log(head) //1
+console.log(tail);//[2,3,4,5,6,7,8,9]</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>// 通过箭头函数的写法定义
+var fnRs = (a,b)=&gt;{
+    var rs = a + b;
+    alert(rs);
+}        
+// fnRs(1,2);
+// 一个参数可以省略小括号
+var fnRs2 = a =&gt;{
+    alert(a);
+}
+fnRs2(&#39;曹豆芽1&#39;);
 
-​     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+// 箭头函数的作用，可以绑定对象中的this(这里的this不是window而是对象)
+var person = {
+    name:&#39;tom&#39;,
+    age:18,
+    showName:function(){
+        setTimeout(()=&gt;{
+            alert(this.name);
+        },1000)            
+    }
+}
+person.showName();</code></pre><h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><pre><code>class Poetry {
+ ``constructor(){
+  ``console.log(&#39;曹豆芽1&#39;);
+ ``}
+}
+class Person extends Poetry{
+ ``constructor(){
+  ``super();
+  ``console.log(&#39;哈哈&#39;);
+ ``}
+}
+let ht = new Person();</code></pre><h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><pre><code>var ht1 = someArray[0];
+var ht2 = someArray[1];
+var ht3 = someArray[2];
+//解构赋值
+let [ht1, ht2, ht3] = someArray; 
+//还有下面例子
+let [,,ht3] = [1,2,3];
+console.log(ht3); //3
 
-​     <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> result<span class="token punctuation">.</span>data<span class="token punctuation">.</span>msg<span class="token punctuation">;</span>
+let [ht1,...last] = [1,2,3];
+console.log(last); //[2,3]
 
-​    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+//对象解构
+let {name,age} = {name: &quot;ht&quot;, age: &quot;17&quot;};
+console.log(name); //ht
+console.log(age); //17
+//注意
+let {ept1} = {};
+console.log(ept1); //undefined
+let {ept2} = {undefined};
+console.log(ept2); //undefined
+let {ept3} = {null};
+console.log(ept3); //null</code></pre><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>1.promise有三种状态，pending、resolved、rejected，对象的状态不受外界影响，只有异步操作的结果可以决定当前是哪一种状态，任何其他操作无法改变这个状态，这也是promise名字的由来，承诺其他手段无法改变状态。<br>2.一旦状态改变，这个状态就永远不会改变，任何时候都可以取得这个结果，状态会由pending改为resolved，或者pending改为rejected。<br>3.promise无法取消，一旦新建就会立即执行；<br>4.如果不设置回调函数，内部的错误不会反应到外部；<br>5.当处于pending状态的对象无法得知目前进展到哪一个阶段；</p>
+<pre><code>var promise = new Promise(function(resolve, reject) {
+  // ... some code
 
-​    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token operator">*</span>err<span class="token operator">*</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-
-​     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-​    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
+  if (/* 异步操作成功 */){
+    resolve(value);//将promise的对象从未完成变成成功
+  } else {
+    reject(error);//将promise的对象从未完成变成失败
+  }
+});</code></pre>
             </div>
             <hr/>
 
@@ -468,7 +534,7 @@ Vue.prototype.$axios = Axios;</code></pre><p>2.在页面使用的时候是</p>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/01/vue-shi-yong-axios/">http://caoduoya.github.io/2020/03/01/vue-shi-yong-axios/</a>
+                    <a href="http://caoduoya.github.io/2020/05/03/es6-de-ji-ben-shi-yong/">http://caoduoya.github.io/2020/05/03/es6-de-ji-ben-shi-yong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -506,8 +572,8 @@ Vue.prototype.$axios = Axios;</code></pre><p>2.在页面使用的时候是</p>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
+                                <a href="/tags/es6/">
+                                    <span class="chip bg-color">es6</span>
                                 </a>
                             
                         </div>
@@ -673,50 +739,52 @@ Vue.prototype.$axios = Axios;</code></pre><p>2.在页面使用的时候是</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/02/js-bi-bao-xiang-tan/">
+                <a href="/2020/05/03/es6-de-ji-ben-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="js闭包详谈">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="es6的基本使用">
                         
-                        <span class="card-title">js闭包详谈</span>
+                        <span class="card-title">es6的基本使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js闭包详谈闭包的定义很简单：函数 A 返回了一个函数 B，并且函数 B 中使用了函数 A 的变量，函数 B 就被称为闭包。
-function A() {
-  let a = 1
-  function B() {
-      console
+                            ES6的一些基本使用变量声明var let 都可用于声明变量.
+区别：1、let：只在let命令所在代码块内有效
+​      2、let 不存在变量提升（内部影响不到外部）
+    var b = [];
+    for(var j=0;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/js/" class="post-category">
-                                    js
+                            <a href="/categories/es6/" class="post-category">
+                                    es6
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/js/">
-                        <span class="chip bg-color">js</span>
+                    <a href="/tags/es6/">
+                        <span class="chip bg-color">es6</span>
                     </a>
                     
                 </div>
@@ -730,31 +798,33 @@ function A() {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/liao-jie-kua-yue-wen-ti/">
+                <a href="/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="了解跨越问题">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="node连接mysql数据库实现登录接口">
                         
-                        <span class="card-title">了解跨越问题</span>
+                        <span class="card-title">node连接mysql数据库实现登录接口</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            了解跨域问题?首先了解下浏览器的同源策略 同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSF
+                            ﻿# node连接mysql数据库实现登录接口
+创建node项目在小窗口使用npm创建,生成package.json文件npm init项目结构目录
+创建db.js链接mysql数据库const mysql = require(&#39;m
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/vue/" class="post-category">
-                                    vue
+                            <a href="/categories/node/" class="post-category">
+                                    node
                                 </a>
                             
                             
@@ -764,8 +834,8 @@ function A() {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
+                    <a href="/tags/node/">
+                        <span class="chip bg-color">node</span>
                     </a>
                     
                 </div>

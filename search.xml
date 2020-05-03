@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>es6的基本使用</title>
+      <link href="/2020/05/03/es6-de-ji-ben-shi-yong/"/>
+      <url>/2020/05/03/es6-de-ji-ben-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ES6的一些基本使用"><a href="#ES6的一些基本使用" class="headerlink" title="ES6的一些基本使用"></a>ES6的一些基本使用</h1><h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>var let 都可用于声明变量.</p><p>区别：1、let：只在let命令所在代码块内有效</p><p>​      2、let 不存在变量提升（内部影响不到外部）</p><pre><code>    var b = [];    for(var j=0;j&lt;10;j++){        let d=j;        b[j]=function(){            console.log(d);        };    }    b[3]() //3</code></pre><p> 3、let 不允许在相同作用于重复声明</p><p>ES5只有全局作用域和函数作用域</p><p>ES6引入了块级作用域的概念 作用域块和块之间不受影响<br>const 也可以声明变量，但是声明的是常量，一旦声明，常量的值就不能改变。</p><p>其他和let基本一致<br>const 声明对象的属性是可以修改的，因为const保存的是对象的地址。</p><p>跨模块常量</p><pre><code>export 导出import 引入几种方式import * as XXX from &#39;./xxx&#39;;  //使用方式console.log(XXX.输出的常量)import {} from &#39;./xxx&#39;; //引入变量import xxx from &#39;xxxxx&#39; ; //引入文件</code></pre><p>ES6数组相关 数组解构</p><h2 id="es6之扩展运算符-三个点（…）"><a href="#es6之扩展运算符-三个点（…）" class="headerlink" title="es6之扩展运算符 三个点（…）"></a>es6之扩展运算符 三个点（…）</h2><pre><code>var [a,b,c]=[1,2,3];console.log(a,b,c)//1,2,3let [head,...tail]=[1,2,3,4,5,6,7,8,9];console.log(head) //1console.log(tail);//[2,3,4,5,6,7,8,9]</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>// 通过箭头函数的写法定义var fnRs = (a,b)=&gt;{    var rs = a + b;    alert(rs);}        // fnRs(1,2);// 一个参数可以省略小括号var fnRs2 = a =&gt;{    alert(a);}fnRs2(&#39;曹豆芽1&#39;);// 箭头函数的作用，可以绑定对象中的this(这里的this不是window而是对象)var person = {    name:&#39;tom&#39;,    age:18,    showName:function(){        setTimeout(()=&gt;{            alert(this.name);        },1000)                }}person.showName();</code></pre><h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><pre><code>class Poetry { ``constructor(){  ``console.log(&#39;曹豆芽1&#39;); ``}}class Person extends Poetry{ ``constructor(){  ``super();  ``console.log(&#39;哈哈&#39;); ``}}let ht = new Person();</code></pre><h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><pre><code>var ht1 = someArray[0];var ht2 = someArray[1];var ht3 = someArray[2];//解构赋值let [ht1, ht2, ht3] = someArray; //还有下面例子let [,,ht3] = [1,2,3];console.log(ht3); //3let [ht1,...last] = [1,2,3];console.log(last); //[2,3]//对象解构let {name,age} = {name: &quot;ht&quot;, age: &quot;17&quot;};console.log(name); //htconsole.log(age); //17//注意let {ept1} = {};console.log(ept1); //undefinedlet {ept2} = {undefined};console.log(ept2); //undefinedlet {ept3} = {null};console.log(ept3); //null</code></pre><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>1.promise有三种状态，pending、resolved、rejected，对象的状态不受外界影响，只有异步操作的结果可以决定当前是哪一种状态，任何其他操作无法改变这个状态，这也是promise名字的由来，承诺其他手段无法改变状态。<br>2.一旦状态改变，这个状态就永远不会改变，任何时候都可以取得这个结果，状态会由pending改为resolved，或者pending改为rejected。<br>3.promise无法取消，一旦新建就会立即执行；<br>4.如果不设置回调函数，内部的错误不会反应到外部；<br>5.当处于pending状态的对象无法得知目前进展到哪一个阶段；</p><pre><code>var promise = new Promise(function(resolve, reject) {  // ... some code  if (/* 异步操作成功 */){    resolve(value);//将promise的对象从未完成变成成功  } else {    reject(error);//将promise的对象从未完成变成失败  }});</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> es6 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> es6 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>node连接mysql数据库实现登录接口</title>
       <link href="/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/"/>
       <url>/2020/04/26/node-lian-jie-mysql-shu-ju-ku-shi-xian-deng-lu-jie-kou/</url>
