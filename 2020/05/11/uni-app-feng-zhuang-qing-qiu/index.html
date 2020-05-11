@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="倒计时误差, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="Uni-app封装请求, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>倒计时误差 | 曹豆芽</title>
+    <title>Uni-app封装请求 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">倒计时误差</h1>
+                    <h1 class="description center-align post-title">Uni-app封装请求</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/js/">
-                                <span class="chip bg-color">js</span>
+                            <a href="/tags/uni/">
+                                <span class="chip bg-color">uni</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/js/" class="post-category">
-                                js
+                            <a href="/categories/uni/" class="post-category">
+                                uni
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-05-11
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    272
+                    467
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -416,33 +416,114 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="setTimeout-倒计时误差"><a href="#setTimeout-倒计时误差" class="headerlink" title="setTimeout 倒计时误差"></a>setTimeout 倒计时误差</h3><p><code>JS</code> 是单线程的，所以 <code>setTimeout</code> 的误差其实是无法被完全解决的，原因有很多，可能是回调中的，有可能是浏览器中的各种事件导致。这也是为什么页面开久了，定时器会不准的原因，当然我们可以通过一定的办法去减少这个误差。</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 以下是一个相对准备的倒计时实现</span>
-<span class="token keyword">var</span> period <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">2</span>
-<span class="token keyword">var</span> startTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> count <span class="token operator">=</span> <span class="token number">0</span>
-<span class="token keyword">var</span> end <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> period
-<span class="token keyword">var</span> interval <span class="token operator">=</span> <span class="token number">1000</span>
-<span class="token keyword">var</span> currentInterval <span class="token operator">=</span> interval
+                <h1 id="Uni-app封装请求"><a href="#Uni-app封装请求" class="headerlink" title="Uni-app封装请求"></a>Uni-app封装请求</h1><p>新建一个api.js文件，主要放请求封装的代码</p>
+<pre><code>const baseUrl = &#39;http://172.0.0.1:8080&#39;;
+const httpRequest = (opts, data) =&gt; {
+    let httpDefaultOpts = {
+        url: baseUrl + opts.url,
+        data: data,
+        method: opts.method,
+        header: opts.method == &#39;get&#39; ? {
+            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,
+            &quot;Accept&quot;: &quot;application/json&quot;,
+            &quot;Content-Type&quot;: &quot;application/json; charset=UTF-8&quot;
+        } : {
+            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,
+            &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;
+        },
+        dataType: &#39;json&#39;,
+    }
+    let promise = new Promise(function(resolve, reject) {
+        uni.request(httpDefaultOpts).then(
+            (res) =&gt; {
+                resolve(res[1])
+            }
+        ).catch(
+            (response) =&gt; {
+                reject(response)
+            }
+        )
+    })
+    return promise
+};
+//带Token请求
+const httpTokenRequest = (opts, data) =&gt; {
+    let token = &quot;&quot;;
+    uni.getStorage({
+        key: &#39;token&#39;,
+        success: function(ress) {
+            token = ress.data
+        }
+    });
+    //此token是登录成功后后台返回保存在storage中的
+    let httpDefaultOpts = {
+        url: baseUrl + opts.url,
+        data: data,
+        method: opts.method,
+        header: opts.method == &#39;get&#39; ? {
+            &#39;Token&#39;: token,
+            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,
+            &quot;Accept&quot;: &quot;application/json&quot;,
+            &quot;Content-Type&quot;: &quot;application/json; charset=UTF-8&quot;
+        } : {
+            &#39;Token&#39;: token,
+            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,
+            &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;
+        },
+        dataType: &#39;json&#39;,
+    }
+    let promise = new Promise(function(resolve, reject) {
+        uni.request(httpDefaultOpts).then(
+            (res) =&gt; {
+                resolve(res[1])
+            }
+        ).catch(
+            (response) =&gt; {
+                reject(response)
+            }
+        )
+    })
+    return promise
+};
 
-<span class="token keyword">function</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  count<span class="token operator">++</span>
-  <span class="token keyword">var</span> offset <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>startTime <span class="token operator">+</span> count <span class="token operator">*</span> interval<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 代码执行所消耗的时间</span>
-  <span class="token keyword">var</span> diff <span class="token operator">=</span> end <span class="token operator">-</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">var</span> h <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>diff <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token keyword">var</span> hdiff <span class="token operator">=</span> diff <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">)</span>
-  <span class="token keyword">var</span> m <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>hdiff <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token keyword">var</span> mdiff <span class="token operator">=</span> hdiff <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span>
-  <span class="token keyword">var</span> s <span class="token operator">=</span> mdiff <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
-  <span class="token keyword">var</span> sCeil <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-  <span class="token keyword">var</span> sFloor <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-  currentInterval <span class="token operator">=</span> interval <span class="token operator">-</span> offset <span class="token comment" spellcheck="true">// 得到下一次循环所消耗的时间</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'时：'</span><span class="token operator">+</span>h<span class="token punctuation">,</span> <span class="token string">'分：'</span><span class="token operator">+</span>m<span class="token punctuation">,</span> <span class="token string">'毫秒：'</span><span class="token operator">+</span>s<span class="token punctuation">,</span> <span class="token string">'秒向上取整：'</span><span class="token operator">+</span>sCeil<span class="token punctuation">,</span> <span class="token string">'代码执行时间：'</span><span class="token operator">+</span>offset<span class="token punctuation">,</span> <span class="token string">'下次循环间隔'</span><span class="token operator">+</span>currentInterval<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 打印 时 分 秒 代码执行时间 下次循环间隔</span>
+export default {
+    baseUrl,
+    httpRequest,
+    httpTokenRequest
+}</code></pre><p>封装代码为二种，一种是无token请求，另一种是token，按照自己的需求去调用想要的请求方式</p>
+<p>在main.js将它全局挂载</p>
+<pre><code>import Vue from &#39;vue&#39;
+import App from &#39;./App&#39;
+import {
+    myRequest
+} from &#39;./util/api.js&#39;
 
-  <span class="token function">setTimeout</span><span class="token punctuation">(</span>loop<span class="token punctuation">,</span> currentInterval<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+Vue.prototype.$myRequest = myRequest
 
-<span class="token function">setTimeout</span><span class="token punctuation">(</span>loop<span class="token punctuation">,</span> currentInterval<span class="token punctuation">)</span></code></pre>
+Vue.config.productionTip = false
+
+App.mpType = &#39;app&#39;
+
+const app = new Vue({
+    ...App
+})
+app.$mount()
+</code></pre><p>在页面中使用$myRequest(可自己定义)去调用封装好的请求方法</p>
+<pre><code>let opts = {
+    url: &#39;/api/add&#39;,
+    method: &#39;post&#39;
+};
+let param = {
+    deviceId: this.deviceCode,
+    deviceName: this.deviceName
+};
+$myRequest.httpTokenRequest(opts, param).then(res =&gt; {
+    console.log(res.data);
+    //打印请求返回的数据
+
+}, error =&gt; {
+    console.log(error);
+})</code></pre><p>到这里一个简易详情的uni-app封装请求就结束了，自己有更多的需求，可以自己去添加和修改</p>
 
             </div>
             <hr/>
@@ -468,7 +549,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/16/dao-ji-shi-wu-chai/">http://caoduoya.github.io/2020/03/16/dao-ji-shi-wu-chai/</a>
+                    <a href="http://caoduoya.github.io/2020/05/11/uni-app-feng-zhuang-qing-qiu/">http://caoduoya.github.io/2020/05/11/uni-app-feng-zhuang-qing-qiu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -506,8 +587,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/js/">
-                                    <span class="chip bg-color">js</span>
+                                <a href="/tags/uni/">
+                                    <span class="chip bg-color">uni</span>
                                 </a>
                             
                         </div>
@@ -673,47 +754,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/17/chang-jian-metaviewport-xiang-guan-zhi-shi/">
+                <a href="/2020/05/11/uni-app-feng-zhuang-qing-qiu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="常见metaviewport相关知识">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Uni-app封装请求">
                         
-                        <span class="card-title">常见metaviewport相关知识</span>
+                        <span class="card-title">Uni-app封装请求</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            常见meta viewport相关知识&lt;!DOCTYPE html>  &lt;!--H5标准声明，使用 HTML5 doctype，不区分大小写-->
-&lt;head lang=”en”> &lt;!--标准的 lang 属性写法
+                            Uni-app封装请求新建一个api.js文件，主要放请求封装的代码
+const baseUrl = &#39;http://172.0.0.1:8080&#39;;
+const httpRequest = (opts, data) =&g
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/uni/" class="post-category">
+                                    uni
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">前端</span>
+                    <a href="/tags/uni/">
+                        <span class="chip bg-color">uni</span>
                     </a>
                     
                 </div>
@@ -727,33 +811,35 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/15/vue-sheng-ming-zhou-qi-gou-zi/">
+                <a href="/2020/05/03/es6-de-ji-ben-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="vue生命周期钩子">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="es6的基本使用">
                         
-                        <span class="card-title">vue生命周期钩子</span>
+                        <span class="card-title">es6的基本使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vue生命周期钩子生命函数的介绍Vue 实例从开始创建、初始化数据、编译模板、挂载Dom和渲染、更新和渲染、卸载等一系列过程，这是 Vue 的生命周期
-生命函数的一一讲解beforeCreate实例还没有完全创建出来之前执行
-created
+                            ES6的一些基本使用变量声明var let 都可用于声明变量.
+区别：1、let：只在let命令所在代码块内有效
+​      2、let 不存在变量提升（内部影响不到外部）
+    var b = [];
+    for(var j=0;
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/vue/" class="post-category">
-                                    vue
+                            <a href="/categories/es6/" class="post-category">
+                                    es6
                                 </a>
                             
                             
@@ -763,8 +849,8 @@ created
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue/">
-                        <span class="chip bg-color">vue</span>
+                    <a href="/tags/es6/">
+                        <span class="chip bg-color">es6</span>
                     </a>
                     
                 </div>

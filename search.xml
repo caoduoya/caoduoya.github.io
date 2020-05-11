@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Uni-app封装请求</title>
+      <link href="/2020/05/11/uni-app-feng-zhuang-qing-qiu/"/>
+      <url>/2020/05/11/uni-app-feng-zhuang-qing-qiu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Uni-app封装请求"><a href="#Uni-app封装请求" class="headerlink" title="Uni-app封装请求"></a>Uni-app封装请求</h1><p>新建一个api.js文件，主要放请求封装的代码</p><pre><code>const baseUrl = &#39;http://172.0.0.1:8080&#39;;const httpRequest = (opts, data) =&gt; {    let httpDefaultOpts = {        url: baseUrl + opts.url,        data: data,        method: opts.method,        header: opts.method == &#39;get&#39; ? {            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,            &quot;Accept&quot;: &quot;application/json&quot;,            &quot;Content-Type&quot;: &quot;application/json; charset=UTF-8&quot;        } : {            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,            &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;        },        dataType: &#39;json&#39;,    }    let promise = new Promise(function(resolve, reject) {        uni.request(httpDefaultOpts).then(            (res) =&gt; {                resolve(res[1])            }        ).catch(            (response) =&gt; {                reject(response)            }        )    })    return promise};//带Token请求const httpTokenRequest = (opts, data) =&gt; {    let token = &quot;&quot;;    uni.getStorage({        key: &#39;token&#39;,        success: function(ress) {            token = ress.data        }    });    //此token是登录成功后后台返回保存在storage中的    let httpDefaultOpts = {        url: baseUrl + opts.url,        data: data,        method: opts.method,        header: opts.method == &#39;get&#39; ? {            &#39;Token&#39;: token,            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,            &quot;Accept&quot;: &quot;application/json&quot;,            &quot;Content-Type&quot;: &quot;application/json; charset=UTF-8&quot;        } : {            &#39;Token&#39;: token,            &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,            &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;        },        dataType: &#39;json&#39;,    }    let promise = new Promise(function(resolve, reject) {        uni.request(httpDefaultOpts).then(            (res) =&gt; {                resolve(res[1])            }        ).catch(            (response) =&gt; {                reject(response)            }        )    })    return promise};export default {    baseUrl,    httpRequest,    httpTokenRequest}</code></pre><p>封装代码为二种，一种是无token请求，另一种是token，按照自己的需求去调用想要的请求方式</p><p>在main.js将它全局挂载</p><pre><code>import Vue from &#39;vue&#39;import App from &#39;./App&#39;import {    myRequest} from &#39;./util/api.js&#39;Vue.prototype.$myRequest = myRequestVue.config.productionTip = falseApp.mpType = &#39;app&#39;const app = new Vue({    ...App})app.$mount()</code></pre><p>在页面中使用$myRequest(可自己定义)去调用封装好的请求方法</p><pre><code>let opts = {    url: &#39;/api/add&#39;,    method: &#39;post&#39;};let param = {    deviceId: this.deviceCode,    deviceName: this.deviceName};$myRequest.httpTokenRequest(opts, param).then(res =&gt; {    console.log(res.data);    //打印请求返回的数据}, error =&gt; {    console.log(error);})</code></pre><p>到这里一个简易详情的uni-app封装请求就结束了，自己有更多的需求，可以自己去添加和修改</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> uni </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uni </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>es6的基本使用</title>
       <link href="/2020/05/03/es6-de-ji-ben-shi-yong/"/>
       <url>/2020/05/03/es6-de-ji-ben-shi-yong/</url>
