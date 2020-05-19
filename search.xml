@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>linux的CentOS7防火墙的使用</title>
+      <link href="/2020/05/19/linux-de-centos7-fang-huo-qiang-de-shi-yong/"/>
+      <url>/2020/05/19/linux-de-centos7-fang-huo-qiang-de-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="linux的CentOS7防火墙的使用"><a href="#linux的CentOS7防火墙的使用" class="headerlink" title="linux的CentOS7防火墙的使用"></a>linux的CentOS7防火墙的使用</h1><p>整理了一些关于防火墙的命令行使用</p><h2 id="基本命令行"><a href="#基本命令行" class="headerlink" title="基本命令行"></a>基本命令行</h2><p>启动：systemctl start firewalld.service</p><p>停止：systemctl stop firewalld.service</p><p>重启： systemctl restart firewalld.service || firewall-cmd –reload</p><p>开启开机启动： systemctl enable firewalld</p><p>禁止开机启动：systemctl disable firewalld</p><p>查看防火墙状态：firewall-cmd –state</p><h2 id="端口操作"><a href="#端口操作" class="headerlink" title="端口操作"></a>端口操作</h2><p>查看已开放的端口： firewall-cmd –list-ports</p><p>开启端口： firewall-cmd –zone=public –add-port=80/tcp –permanent</p><p>关闭端口： firewall-cmd –zone=public –remove-port=3338/tcp –permanent</p><p>查询某端口是否开启： firewall-cmd –query-port=80/tcp</p><p>重启防火墙： firewall-cmd –reload</p><p>防火墙的操作也是对应前端项目部署的重要一部分，整理出来方便自己的查阅和小伙伴们。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Uni-app封装请求</title>
       <link href="/2020/05/11/uni-app-feng-zhuang-qing-qiu/"/>
       <url>/2020/05/11/uni-app-feng-zhuang-qing-qiu/</url>
