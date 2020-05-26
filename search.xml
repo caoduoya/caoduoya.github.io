@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JS实现继承的方式</title>
+      <link href="/2020/05/26/js-shi-xian-ji-cheng-de-fang-shi/"/>
+      <url>/2020/05/26/js-shi-xian-ji-cheng-de-fang-shi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="JS实现继承的方式"><a href="#JS实现继承的方式" class="headerlink" title="JS实现继承的方式"></a>JS实现继承的方式</h1><pre><code>// 定义一个父类    function Father(name) {      // 属性      this.name = name || &quot;father&quot;;      // 实例方法      this.sayName = function() {        console.log(this.name);      };      this.color = [&quot;red&quot;, &quot;blue&quot;];    }    // 原型方法    Father.prototype.age = 18;    Father.prototype.sayAge = function() {      console.log(this.age);    };</code></pre><p>1.原型链继承：将父类的实例作为子类的原型</p><pre><code>function Son(name) {      this.name = name || &quot;son&quot;;    }    Son.prototype = new Father();    let s1 = new Son(&quot;s1&quot;);    let s2 = new Son(&quot;s2&quot;);    s1.color.push(&quot;black&quot;);    console.log(s1.name); //s1    console.log(s1.color); //[&#39;red&#39;,&#39;blue&#39;,&#39;black&#39;]    console.log(s1.age); //18    s1.sayAge(); //18    console.log(s2.name); //s2    console.log(s2.color); //[&#39;red&#39;,&#39;blue&#39;,&#39;black&#39;]</code></pre><pre><code>优点：1. 简单，易于实现2. 父类新增原型方法、原型属性，子类都能访问到缺点：1. 无法实现多继承，因为原型一次只能被一个实例更改2. 来自原型对象的所有属性被所有实例共享（上诉例子中的color属性）3. 创建子类实例时，无法向父构造函数传参</code></pre><p>2.构造继承继承：复制父类的实例属性给子类</p><pre><code>function Son(name) {      Father.call(this, &quot;我是传给父类的参数&quot;);      this.name = name || &quot;son&quot;;    }    let s = new Son(&quot;son&quot;);    console.log(s.name); // son    //s.sayAge(); // 抛出错误（无法继承父类原型方法）    s.sayName(); // son    console.log(s.age); // undefined （无法继承父类原型属性）    console.log(s instanceof Father); // false    console.log(s instanceof Son); // true</code></pre><pre><code>优点：1. 解决了原型链继承中子类实例共享父类引用属性的问题2. 创建子类实例时，可以向父类传递参数3. 可以实现多继承（call多个父类对象）缺点：1. 实例并不是父类的实例，只是子类的实例2. 只能继承父类实例的属性和方法，不能继承其原型上的属性和方法3. 无法实现函数复用，每个子类都有父类实例函数的副本，影响性能</code></pre><p>3.组合继承：将原型链和借用构造函数的技术组合到一块。使用原型链实现对原型属性和方法的继承，而通过构造函数来实现对实例属性的继承</p><pre><code> function Son(name) {     // 第一次调用父类构造器 子类实例增加父类实例      Father.call(this, &quot;我是传给父类的参数&quot;);      this.name = name || &quot;son&quot;;    }    // 经过new运算符 第二次调用父类构造器 子类原型也增加了父类实例    Son.prototype = new Father();    let s = new Son(&quot;son&quot;);    console.log(s.name); // son    s.sayAge(); // 18    s.sayName(); // son    console.log(s.age); // 18    console.log(s instanceof Father); // true    console.log(s instanceof Son); // true    console.log(s.constructor === Father); // true    console.log(s.constructor === Son); // false</code></pre><pre><code>优点：1. 弥补了构造继承的缺点，现在既可以继承实例的属性和方法，也可以继承原型的属性和方法2. 既是子类的实例，也是父类的实例3. 可以向父类传递参数4. 函数可以复用缺点：1. 调用了两次父类构造函数，生成了两份实例2. constructor指向问题</code></pre><p>4.实例继承：为父类实例添加新特征，作为子类实例返回</p><pre><code> function Son(name) {      let f=new Father(&#39;传给父类的参数&#39;)      f.name=name||&#39;son&#39;      return f    }    let s = new Son(&quot;son&quot;); //或者直接调用子类构造函数 let s = Son(&quot;son&quot;);    console.log(s.name); // son    s.sayAge(); // 18    s.sayName(); // son    console.log(s.age); // 18    console.log(s instanceof Father); // true    console.log(s instanceof Son); // false    console.log(s.constructor === Father); // true    console.log(s.constructor === Son); // false</code></pre><pre><code>优点：1. 不限制调用方式，不管是new 子类()还是子类(),返回的对象具有相同的效果缺点：1. 实例是父类的实例，不是子类的实例2. 不支持多继承</code></pre><p>5.拷贝继承：对父类实例中的的方法与属性拷贝给子类的原型</p><pre><code>function Son(name) {      let f = new Father(&quot;传给父类的参数&quot;);      for (let k in f) {        Son.prototype[k] = f[k];      }      Son.prototype.name = name;    }    let s = new Son(&quot;son&quot;);    console.log(s.name); // son    s.sayAge(); // 18    s.sayName(); // son    console.log(s.age); // 18    console.log(s instanceof Father); // false    console.log(s instanceof Son); // true    console.log(s.constructor === Father); // false    console.log(s.constructor === Son); // true</code></pre><pre><code>优点：1. 支持多继承缺点：1. 效率低，性能差，占用内存高（因为需要拷贝父类属性）2. 无法获取父类不可枚举的方法（不可枚举的方法，不能使用for-in访问到)</code></pre><p>6.寄生组合继承：通过寄生方式，砍掉父类的实例属性，避免了组合继承生成两份实例的缺点</p><pre><code>function Son(name) {      Father.call(this);      this.name = name || &quot;son&quot;;    }    // 方法一  自己动手创建一个中间类    // (function() {    //   let NoneFun = function() {};    //   NoneFun.prototype = Father.prototype;    //   Son.prototype = new NoneFun();    //   Son.prototype.constructor = Son;    // })();    // 方法二  直接借用Object.create()方法    Son.prototype = Object.create(Father.prototype);    // 修复构造函数指向    Son.prototype.constructor = Son;    let s = new Son(&quot;son&quot;);    console.log(s.name); // son    s.sayAge(); // 18    s.sayName(); // son    console.log(s.age); // 18    console.log(s instanceof Father); // true    console.log(s instanceof Son); // true    console.log(s.constructor === Father); // false    console.log(s.constructor === Son); // true</code></pre><pre><code>优点：1. 比较完美（js实现继承首选方式）缺点：1.实现起来较为复杂（可通过Object.create简化）</code></pre><p>7.es6–Class继承：使用extends表明继承自哪个父类，并且在子类构造函数中必须调用super</p><pre><code>class Son extends Father {      constructor(name) {        super(name);        this.name = name || &quot;son&quot;;      }    }    let s = new Son(&quot;son&quot;);    console.log(s.name); // son    s.sayAge(); // 18    s.sayName(); // son    console.log(s.age); // 18    console.log(s instanceof Father); // true    console.log(s instanceof Son); // true    console.log(s.constructor === Father); // false    console.log(s.constructor === Son); // true</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> js </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux的CentOS7防火墙的使用</title>
       <link href="/2020/05/19/linux-de-centos7-fang-huo-qiang-de-shi-yong/"/>
       <url>/2020/05/19/linux-de-centos7-fang-huo-qiang-de-shi-yong/</url>
