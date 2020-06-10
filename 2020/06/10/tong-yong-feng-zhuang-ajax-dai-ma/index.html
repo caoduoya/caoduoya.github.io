@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ajax、axios、fetch区别, 曹豆芽,caodouya,个人博客,技术博客">
+    <meta name="keywords" content="通用封装ajax代码, 曹豆芽,caodouya,个人博客,技术博客">
     <meta name="description" content="曹豆芽的个人博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ajax、axios、fetch区别 | 曹豆芽</title>
+    <title>通用封装ajax代码 | 曹豆芽</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -237,12 +237,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ajax、axios、fetch区别</h1>
+                    <h1 class="description center-align post-title">通用封装ajax代码</h1>
                 </div>
             </div>
         </div>
@@ -359,8 +359,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">前端</span>
+                            <a href="/tags/ajax/">
+                                <span class="chip bg-color">ajax</span>
                             </a>
                         
                     </div>
@@ -371,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/ajax/" class="post-category">
+                                ajax
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-11
+                    2020-06-10
                 </div>
                 
 
@@ -393,14 +393,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    322
+                    667
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -416,63 +416,122 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="ajax、axios、fetch区别"><a href="#ajax、axios、fetch区别" class="headerlink" title="ajax、axios、fetch区别"></a>ajax、axios、fetch区别</h3><p><strong>ajax</strong></p>
-<pre class=" language-js"><code class="language-js">$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-   type<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
-   url<span class="token punctuation">:</span> url<span class="token punctuation">,</span>
-   data<span class="token punctuation">:</span> data<span class="token punctuation">,</span>
-   dataType<span class="token punctuation">:</span> dataType<span class="token punctuation">,</span>
-   success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-   error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>优缺点：</p>
-<ul>
-<li>本身是针对<code>MVC</code>的编程,不符合现在前端<code>MVVM</code>的浪潮</li>
-<li>基于原生的<code>XHR</code>开发，<code>XHR</code>本身的架构不清晰，已经有了<code>fetch</code>的替代方案</li>
-<li><code>JQuery</code>整个项目太大，单纯使用<code>ajax</code>却要引入整个<code>JQuery</code>非常的不合理（采取个性化打包的方案又不能享受CDN服务）</li>
-</ul>
-<p><strong>axios</strong></p>
-<pre class=" language-js"><code class="language-js"><span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
-    url<span class="token punctuation">:</span> <span class="token string">'/user/12345'</span><span class="token punctuation">,</span>
-    data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        firstName<span class="token punctuation">:</span> <span class="token string">'Fred'</span><span class="token punctuation">,</span>
-        lastName<span class="token punctuation">:</span> <span class="token string">'Flintstone'</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>优缺点：</p>
-<ul>
-<li>从浏览器中创建 <code>XMLHttpRequest</code></li>
-<li>从 <code>node.js</code> 发出 <code>http</code> 请求</li>
-<li>支持 <code>Promise API</code></li>
-<li>拦截请求和响应</li>
-<li>转换请求和响应数据</li>
-<li>取消请求</li>
-<li>自动转换<code>JSON</code>数据</li>
-<li>客户端支持防止<code>CSRF/XSRF</code></li>
-</ul>
-<p><strong>fetch</strong></p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">let</span> data <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Oops, error"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token punctuation">}</span></code></pre>
-<p>优缺点：</p>
-<ul>
-<li><code>fetcht</code>只对网络请求报错，对<code>400</code>，<code>500</code>都当做成功的请求，需要封装去处理</li>
-<li><code>fetch</code>默认不会带<code>cookie</code>，需要添加配置项</li>
-<li><code>fetch</code>不支持<code>abort</code>，不支持超时控制，使用<code>setTimeout</code>及<code>Promise.reject</code>的实现的超时控制并不能阻止请求过程继续在后台运行，造成了量的浪费</li>
-<li><code>fetch</code>没有办法原生监测请求的进度，而XHR可以</li>
-</ul>
+                <h2 id="通用封装ajax代码"><a href="#通用封装ajax代码" class="headerlink" title="通用封装ajax代码"></a>通用封装ajax代码</h2><p>封装代码</p>
+<pre><code>function Ajax(obj){
+    var ajax = null;
+    if(window.XMLHttpRequest){
+        ajax = new XMLHttpRequest();
+    }else if(window.ActiveXobject){
+        ajax = new ActiveXobject(&quot;Microsoft.XMLHTTP&quot;);
+    }else{
+        alert(&quot;请升级浏览器&quot;);
+        return false;
+    }
+    obj.method = obj.method || &quot;get&quot;; // 默认发送get请求
+    if(!obj.url){
+       throw new Error(&quot;请求地址不能为空&quot;);
+    }
+    if(Object.prototype.toString.call(obj.method) != &quot;[object String]&quot;){
+       throw new Error(&quot;请求地址必须是字符串&quot;);
+    }else if(obj.method != &quot;get&quot; &amp;&amp; obj.method != &quot;post&quot;){
+        throw new Error(&quot;请求地址必须是get或者是post&quot;);
+    }
+    if(Object.prototype.toString.call(obj.url) != &quot;[object String]&quot;){
+       throw new Error(&quot;请求地址必须是字符串&quot;);
+    }
+    if(obj.async == &quot;undefined&quot;){
+           obj.async = true;
+    }
+    if(Object.prototype.toString.call(obj.async) != &quot;[object Boolean]&quot;){
+       throw new Error(&quot;是否异步的参数必须是布尔值&quot;);
+    }
+     if(obj.data != &quot;undefined&quot;){
+         if(Object.prototype.toString.call(obj.data) == &quot;[object String]&quot;){
+             if(obj.data.indexOf(&quot;&amp;&quot;)&gt;=0){
+                 if(obj.method == &quot;get&quot;){
+                    obj.url += &quot;?&quot;+obj.data;
+                 }else if(obj.method == &quot;post&quot;){
+                     var str = obj.data;
+                 }
+             }else{
+                 throw new Error(&quot;携带的参数格式不对，字符串必须是带&#39;=&#39;符号的键值对&quot;);
+             }
+         }else if(Object.prototype.toString.call(obj.data) == &quot;[object Object]&quot;){
+              var str = &#39;&#39;;
+             for(var attr in obj.data){
+                 str += attr + &quot;=&quot; + obj.data[attr];
+             }
+         }else{
+             throw new Error(&quot;携带的参数格式不对，需要字符串或者对象&quot;);
+         }
+    }
+    if(obj.success == &quot;undefined&quot;){
+        obj.success = function(res){}
+    }
+    if(obj.error == &quot;undefined&quot;){
+        obj.error = function(){}
+    }
+    if(Object.prototype.toString.call(obj.success) != &quot;[object Function]&quot; || Object.prototype.toString.call(obj.error) != &quot;[object Function]&quot;){
+        throw new Error(&quot;回调函数必须是函数&quot;);
+    }
+    ajax.open(obj.method,obj.url,obj.async)
+    ajax.onreadystatechange=function(){
+        if(ajax.readyState == 4){
+            if(ajax.status&gt;=200 &amp;&amp; ajax.status&lt;300){
+                var res;
+                switch(obj.dataType){
+                    case undefined:
+                    case &quot;json&quot;:
+                        res = JSON.parse(ajax.responseText);
+                    break;
+                    case &quot;string&quot;:
+                        res = ajax.responseText;
+                    break;
+                    case &quot;xml&quot;:
+                        res = ajax.responseXML;
+                    break;
+                    default:
+                        throw new Error(&quot;期望的数据格式参数传入错误！&quot;);
+                    }
+               obj.success(res);
+            }else{
+                obj.error();
+            }
+        }
+    }
+    if(obj.method==&#39;post&#39;){
+        ajax.setRequestHeader(&quot;content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+        if(obj.data != undefined){
+            ajax.send(str);
+            return;
+        }
+    }
+    ajax.send();
+}</code></pre><p>调用</p>
+<pre><code>var pname = document.querySelector(&quot;[name=&#39;province&#39;]&quot;).value.trim();
+    var response = Ajax({
+        data:{province:pname},
+        url:&quot;postAjax.php&quot;,
+        method:&quot;post&quot;,
+        asyn:true,
+        success:function(res){
+            var arr = JSON.parse(res);
+            var ul = document.querySelector(&quot;ul&quot;);
+            ul.innerHTML = &#39;&#39;;
+            for(var i=0;i&lt;arr.length;i++){
+                var li = document.createElement(&quot;li&quot;);
+                li.innerText = arr[i];
+                ul.appendChild(li);
+            }
+        }
+    });</code></pre><p>get和post的区别：</p>
+<ol>
+<li>get请求的数据展示在地址栏，post在http请求的请求主体中</li>
+<li>get请求的数据长度有限制，post没有限制，除非在服务器设置限制</li>
+<li>get请求的数据格式有限制，必须是url编码的，post的数据没有限制</li>
+<li>get请求不如post安全</li>
+<li>get请求容易有缓存，post没有缓存</li>
+</ol>
 
             </div>
             <hr/>
@@ -498,7 +557,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://caoduoya.github.io/2020/03/11/ajax-axios-fetch-qu-bie/">http://caoduoya.github.io/2020/03/11/ajax-axios-fetch-qu-bie/</a>
+                    <a href="http://caoduoya.github.io/2020/06/10/tong-yong-feng-zhuang-ajax-dai-ma/">http://caoduoya.github.io/2020/06/10/tong-yong-feng-zhuang-ajax-dai-ma/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -536,8 +595,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">前端</span>
+                                <a href="/tags/ajax/">
+                                    <span class="chip bg-color">ajax</span>
                                 </a>
                             
                         </div>
@@ -703,48 +762,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/13/jquery-extend-yu-jquery-fn-extend-de-qu-bie/">
+                <a href="/2020/06/10/tong-yong-feng-zhuang-ajax-dai-ma/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="jQuery.extend与jQuery.fn.extend的区别">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="通用封装ajax代码">
                         
-                        <span class="card-title">jQuery.extend与jQuery.fn.extend的区别</span>
+                        <span class="card-title">通用封装ajax代码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            jQuery.extend 与 jQuery.fn.extend 的区别
-$.fn.extend() 和 $.extend() 是 jQuery 为扩展插件提拱了两个方法
-$.extend(object); // 为jQuery添加“静态方
+                            通用封装ajax代码封装代码
+function Ajax(obj){
+    var ajax = null;
+    if(window.XMLHttpRequest){
+        ajax = new XMLHttpRequest
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/jq/" class="post-category">
-                                    jq
+                            <a href="/categories/ajax/" class="post-category">
+                                    ajax
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/jq/">
-                        <span class="chip bg-color">jq</span>
+                    <a href="/tags/ajax/">
+                        <span class="chip bg-color">ajax</span>
                     </a>
                     
                 </div>
@@ -758,35 +821,33 @@ $.extend(object); // 为jQuery添加“静态方
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/10/shu-zu-qu-chong-fang-fa-de-fang-shi-zong-jie/">
+                <a href="/2020/06/02/http-xie-yi-he-hui-hua-xiang-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="数组去重方法的方式总结">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="HTTP协议和会话详解">
                         
-                        <span class="card-title">数组去重方法的方式总结</span>
+                        <span class="card-title">HTTP协议和会话详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            数组去重方法的方式总结方法一、利用ES6 Set去重（ES6中最常用）
-function unique (arr) {
-  return Array.from(new Set(arr))
-}
-var arr = [1,1,'true','t
+                            HTTP协议为什么要学习http？因为前端和后台进行交互的时候，使用的就是这个协议。
+HTTP协议，叫超文本传输协议(Hypertext transfer protocol)。是一个规则，规定了浏览器和万维网服务器之间通信的规则。
+HTTP
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/js/" class="post-category">
-                                    js
+                            <a href="/categories/http/" class="post-category">
+                                    http
                                 </a>
                             
                             
@@ -796,8 +857,8 @@ var arr = [1,1,'true','t
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/js/">
-                        <span class="chip bg-color">js</span>
+                    <a href="/tags/http/">
+                        <span class="chip bg-color">http</span>
                     </a>
                     
                 </div>

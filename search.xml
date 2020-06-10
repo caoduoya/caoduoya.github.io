@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>通用封装ajax代码</title>
+      <link href="/2020/06/10/tong-yong-feng-zhuang-ajax-dai-ma/"/>
+      <url>/2020/06/10/tong-yong-feng-zhuang-ajax-dai-ma/</url>
+      
+        <content type="html"><![CDATA[<h2 id="通用封装ajax代码"><a href="#通用封装ajax代码" class="headerlink" title="通用封装ajax代码"></a>通用封装ajax代码</h2><p>封装代码</p><pre><code>function Ajax(obj){    var ajax = null;    if(window.XMLHttpRequest){        ajax = new XMLHttpRequest();    }else if(window.ActiveXobject){        ajax = new ActiveXobject(&quot;Microsoft.XMLHTTP&quot;);    }else{        alert(&quot;请升级浏览器&quot;);        return false;    }    obj.method = obj.method || &quot;get&quot;; // 默认发送get请求    if(!obj.url){       throw new Error(&quot;请求地址不能为空&quot;);    }    if(Object.prototype.toString.call(obj.method) != &quot;[object String]&quot;){       throw new Error(&quot;请求地址必须是字符串&quot;);    }else if(obj.method != &quot;get&quot; &amp;&amp; obj.method != &quot;post&quot;){        throw new Error(&quot;请求地址必须是get或者是post&quot;);    }    if(Object.prototype.toString.call(obj.url) != &quot;[object String]&quot;){       throw new Error(&quot;请求地址必须是字符串&quot;);    }    if(obj.async == &quot;undefined&quot;){           obj.async = true;    }    if(Object.prototype.toString.call(obj.async) != &quot;[object Boolean]&quot;){       throw new Error(&quot;是否异步的参数必须是布尔值&quot;);    }     if(obj.data != &quot;undefined&quot;){         if(Object.prototype.toString.call(obj.data) == &quot;[object String]&quot;){             if(obj.data.indexOf(&quot;&amp;&quot;)&gt;=0){                 if(obj.method == &quot;get&quot;){                    obj.url += &quot;?&quot;+obj.data;                 }else if(obj.method == &quot;post&quot;){                     var str = obj.data;                 }             }else{                 throw new Error(&quot;携带的参数格式不对，字符串必须是带&#39;=&#39;符号的键值对&quot;);             }         }else if(Object.prototype.toString.call(obj.data) == &quot;[object Object]&quot;){              var str = &#39;&#39;;             for(var attr in obj.data){                 str += attr + &quot;=&quot; + obj.data[attr];             }         }else{             throw new Error(&quot;携带的参数格式不对，需要字符串或者对象&quot;);         }    }    if(obj.success == &quot;undefined&quot;){        obj.success = function(res){}    }    if(obj.error == &quot;undefined&quot;){        obj.error = function(){}    }    if(Object.prototype.toString.call(obj.success) != &quot;[object Function]&quot; || Object.prototype.toString.call(obj.error) != &quot;[object Function]&quot;){        throw new Error(&quot;回调函数必须是函数&quot;);    }    ajax.open(obj.method,obj.url,obj.async)    ajax.onreadystatechange=function(){        if(ajax.readyState == 4){            if(ajax.status&gt;=200 &amp;&amp; ajax.status&lt;300){                var res;                switch(obj.dataType){                    case undefined:                    case &quot;json&quot;:                        res = JSON.parse(ajax.responseText);                    break;                    case &quot;string&quot;:                        res = ajax.responseText;                    break;                    case &quot;xml&quot;:                        res = ajax.responseXML;                    break;                    default:                        throw new Error(&quot;期望的数据格式参数传入错误！&quot;);                    }               obj.success(res);            }else{                obj.error();            }        }    }    if(obj.method==&#39;post&#39;){        ajax.setRequestHeader(&quot;content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);        if(obj.data != undefined){            ajax.send(str);            return;        }    }    ajax.send();}</code></pre><p>调用</p><pre><code>var pname = document.querySelector(&quot;[name=&#39;province&#39;]&quot;).value.trim();    var response = Ajax({        data:{province:pname},        url:&quot;postAjax.php&quot;,        method:&quot;post&quot;,        asyn:true,        success:function(res){            var arr = JSON.parse(res);            var ul = document.querySelector(&quot;ul&quot;);            ul.innerHTML = &#39;&#39;;            for(var i=0;i&lt;arr.length;i++){                var li = document.createElement(&quot;li&quot;);                li.innerText = arr[i];                ul.appendChild(li);            }        }    });</code></pre><p>get和post的区别：</p><ol><li>get请求的数据展示在地址栏，post在http请求的请求主体中</li><li>get请求的数据长度有限制，post没有限制，除非在服务器设置限制</li><li>get请求的数据格式有限制，必须是url编码的，post的数据没有限制</li><li>get请求不如post安全</li><li>get请求容易有缓存，post没有缓存</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> ajax </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ajax </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTTP协议和会话详解</title>
       <link href="/2020/06/02/http-xie-yi-he-hui-hua-xiang-jie/"/>
       <url>/2020/06/02/http-xie-yi-he-hui-hua-xiang-jie/</url>
